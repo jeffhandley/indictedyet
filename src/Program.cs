@@ -66,7 +66,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
         </title>
         <style>
             html {
-                width: 100vw;
+                width: 100%;
                 height: 100vh;
                 background-color: #0C0C0C;
                 background-image: url(/jail-bg.jpg);
@@ -102,10 +102,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
             #foot-content {
                 background-color: rgba(225, 225, 255, 0.75);
                 border-top: 2px solid black;
-                position: absolute;
-                bottom: 0;
-                margin: 0;
-                width: 100%;
+                margin-top: 15vh;
                 padding: 0.6em 0;
                 text-align: center;
                 font-weight: bold;
@@ -133,7 +130,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
                 <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {criminal.Name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
         </div>
-        <div id=""foot-content"" class=""invisible"">
+        <div id=""foot-content"">
             <a href=""github"" href=""https://github.com/jeffhandley/indictedyet"">Website</a> by <a target=""twitter"" href=""https://twitter.com/JeffHandley"">@JeffHandley</a>.
             Photo by <a target=""unsplash"" href=""https://unsplash.com/@emilianobar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Emiliano Bar</a> on <a target=""unsplash"" href=""https://unsplash.com/s/photos/prison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Unsplash</a>.
         </div>
