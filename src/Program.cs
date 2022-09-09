@@ -8,28 +8,43 @@ var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.MapGet("{criminal=the-former-guy}", (HttpContext context, string criminal) => {
+app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
     string[] noEmojis = new[] { "😒","🤨","😤","😡","🤬","😾","😑","🙄","😣","😫","😖","😞","😟","😧","😩" };
     string randomNoEmoji = noEmojis[RandomNumberGenerator.GetInt32(noEmojis.Length)];
 
     string notYet = $"No, not yet.<p>{randomNoEmoji}</p>";
     string no = $"No, and they won't be.<p>{randomNoEmoji}</p>";
 
-    var name = criminal switch {
-        "the-former-guy" or "tfg" or "45" or "www" or "" or null => "The Former Guy",
-        "steve-bannon" or "bannon" => "Steve Bannon",
-        "michael-flynn" or "flynn" => "Michael Flynn",
-        "matt-gaetz" or "gaetz" or "rapey-mcforehead" => "Rapey McForehead",
-        _ => criminal
+    var criminal = name switch {
+        "the-former-guy" or "tfg" or "45" or "www" or "" or null => new Criminal {
+            Name = "The Former Guy",
+            Url = "https://twitter.com/search?q=%23TFG&f=live",
+            Message = notYet
+        },
+        "steve-bannon" or "bannon" => new Criminal {
+            Name = "Steve Bannon",
+            Url = "https://twitter.com/search?q=steve%20bannon%20perp%20walk&f=video",
+            Message = @"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.<p>🥳</p><p>Unfortunately, he was released without bail.</p>"
+        },
+        "michael-flynn" or "flynn" => new Criminal {
+            Name = "Michael Flynn",
+            Url = "https://twitter.com/search?q=Michael%20Flynn&f=live",
+            Message = notYet
+        },
+        "matt-gaetz" or "gaetz" or "matt-geatz" or "geatz" or "rapey-mcforehead" => new Criminal {
+            Name = "Matt Gaetz",
+            Url = "https://twitter.com/search?q=%23RapeyMcForehead&f=live",
+            Message = notYet
+        },
+        _ => new Criminal {
+            Name = name,
+            Message = @"Not that we know of. Tweet <a target=""share"" href=""https://twitter.com/IndictedYet"">@IndictedYet</a> if you have an update!"
+        }
     };
 
-    var haveThey = name switch {
-        "The Former Guy" => notYet,
-        "Michael Flynn" => notYet,
-        "Rapey McForehead" => notYet,
-        "Steve Bannon" => @"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.<p>🥳</p><p>Unfortunately, he was released without bail.</p>",
-        _ => @"Not that we know of. Tweet <a target=""share"" href=""https://twitter.com/IndictedYet"">@IndictedYet</a> if you have an update!"
-    };
+    var linkedName = criminal.Url is not null ?
+        $@"<a target=""twitter"" href=""{criminal.Url}"">{criminal.Name}</a>" :
+        criminal.Name;
 
     context.Response.ContentType = "text/html; charset=utf-8";
 
@@ -44,7 +59,7 @@ app.MapGet("{criminal=the-former-guy}", (HttpContext context, string criminal) =
         <link rel=""icon"" type=""image/png"" sizes=""16x16"" href=""/favicon-16x16.png"" />
         <link rel=""manifest"" href=""/site.webmanifest"" />
         <title>" +
-            $"Is {name} Indicted Yet?" + @"
+            $"Is {criminal.Name} Indicted Yet?" + @"
         </title>
         <style>
             html {
@@ -103,13 +118,13 @@ app.MapGet("{criminal=the-former-guy}", (HttpContext context, string criminal) =
     <body>
         <div id=""body-content"">
             <h1>" +
-                $"Is {name} Indicted Yet?" + @"
+                $"Is {linkedName} Indicted Yet?" + @"
             </h1>
             <h2>" +
-                haveThey + @"
+                criminal.Message + @"
             </h2>
             <div id=""share"" class=""invisible"">
-                <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
+                <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {criminal.Name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
         </div>
         <div id=""foot-content"">
@@ -125,3 +140,10 @@ app.MapGet("{criminal=the-former-guy}", (HttpContext context, string criminal) =
 });
 
 app.Run();
+
+struct Criminal
+{
+    public string Name;
+    public string Url;
+    public string Message;
+}
