@@ -15,8 +15,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
     string randomNotIndictedEmoji = notIndictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)];
     string randomIndictedEmoji = indictedEmojis[RandomNumberGenerator.GetInt32(indictedEmojis.Length)];
 
-    string notYet = $"No, not yet.<p>{randomNotIndictedEmoji}</p>";
-    string no = $"No, and they won't be.<p>{randomNotIndictedEmoji}</p>";
+    string notYet = @$"No, not yet.<p class=""emoji"">{randomNotIndictedEmoji}</p>";
+    string no = @$"No, and they won't be.<p class=""emoji"">{randomNotIndictedEmoji}</p>";
 
     var criminal = name switch {
         "the-former-guy" or "tfg" or "45" or "www" or "" or null => new Criminal {
@@ -27,7 +27,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
         "steve-bannon" or "bannon" => new Criminal {
             Name = "Steve Bannon",
             Url = "https://twitter.com/search?q=steve%20bannon%20perp%20walk&f=video",
-            Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.<p>{randomIndictedEmoji}</p><p>Unfortunately, he was released without bail.</p>"
+            Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.<p class=""emoji"">{randomIndictedEmoji}</p><p>Unfortunately, he was released without bail.</p><p class=""emoji"">{randomNotIndictedEmoji}</p>"
         },
         "michael-flynn" or "flynn" => new Criminal {
             Name = "Michael Flynn",
@@ -115,6 +115,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
             }
             .invisible {
                 opacity: 0!important;
+            }
+            .emoji {
+                font-size: xxx-large;
             }
         </style>
     </head>
