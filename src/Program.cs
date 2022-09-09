@@ -53,6 +53,7 @@ app.MapGet("/", (HttpContext context) => {
             html {
                 width: 100vw;
                 height: 100vh;
+                background-color: #0C0C0C;
                 background-image: url(/jail-bg.jpg);
                 background-repeat: no-repeat;
                 background-size: cover;
