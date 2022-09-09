@@ -32,7 +32,7 @@ app.MapGet("/", (HttpContext context) => {
         "Michael Flynn" => notYet,
         "Rapey McForehead" => notYet,
         "Steve Bannon" => @"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.<p>🥳</p><p>Unfortunately, he was released without bail.</p>",
-        _ => "Not that we know of. Tweet @IndictedYet if you have an update for us!"
+        _ => @"Not that we know of. Tweet <a target=""share"" href=""https://twitter.com/IndictedYet"">@IndictedYet</a> if you have an update!"
     };
 
     context.Response.ContentType = "text/html; charset=utf-8";
@@ -67,6 +67,7 @@ app.MapGet("/", (HttpContext context) => {
                 width: 80vw;
                 margin-top: 50px;
                 margin-left: 10vw;
+                padding: 30px;
                 text-align: center;
             }
             #body-content h1 {
