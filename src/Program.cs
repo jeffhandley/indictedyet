@@ -78,22 +78,28 @@ app.MapGet("/", (HttpContext context) => {
             #body-content h2 {
                 font-size: 180%;
             }
-            #body-content #share {
-                min-height: 75px;
-                opacity: 0;
+            #share {
+                min-height: 40px;
+                padding-top: 25px;
                 transition: opacity 0.3s;
-                -webkit-transition: opacity 0.3s;
+                opacity: 1;
             }
             #foot-content {
-                background-color: rgba(225, 225, 255, 0.5);
-                border: 1px solid black;
+                background-color: rgba(225, 225, 255, 0.75);
+                border-top: 2px solid black;
+                position: absolute;
+                bottom: 0;
+                margin: 0;
                 width: 100%;
-                margin-top: 15vh;
-                padding: 0.4em;
+                padding: 0.6em 0;
                 text-align: center;
+                font-weight: bold;
             }
             a, a:visited, a:active {
                 color: rgb(25, 25, 175);
+            }
+            .invisible {
+                opacity: 0!important;
             }
         </style>
     </head>
@@ -105,16 +111,17 @@ app.MapGet("/", (HttpContext context) => {
             <h2>" +
                 haveThey + @"
             </h2>
-            <div id=""share"">
+            <div id=""share"" class=""invisible"">
                 <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
         </div>
         <div id=""foot-content"">
-            Photo by <a target=""unsplash"" href=""https://unsplash.com/@emilianobar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Emiliano Bar</a> on <a target=""unsplash"" href=""https://unsplash.com/s/photos/prison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Unsplash</a>
+            Website by <a target=""twitter"" href=""https://twitter.com/JeffHandley"">@JeffHandley</a>.
+            Photo by <a target=""unsplash"" href=""https://unsplash.com/@emilianobar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Emiliano Bar</a> on <a target=""unsplash"" href=""https://unsplash.com/s/photos/prison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Unsplash</a>.
         </div>
     </body>
     <script>
-        window.setTimeout(1000, () => document.getElementById(""share"").style.opacity = 1);
+        window.setTimeout(() => { document.getElementById(""share"").className = """"; console.log(document.getElementById(""share"").className);}, 500);
     </script>
 </html>
 ";
