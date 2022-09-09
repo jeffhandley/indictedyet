@@ -5,7 +5,6 @@ using static System.Text.Encoding;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.MapGet("/", (HttpContext context) => {
