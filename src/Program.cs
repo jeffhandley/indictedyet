@@ -38,7 +38,7 @@ app.MapGet("/", (HttpContext context) => {
 
     return @"
 <!DOCTYPE html>
-<html lang=""en-US"" style=""height:100%;"">
+<html lang=""en-US"">
     <head>
         <meta charset=""utf-8"">
         <meta name=""viewport"" content=""width=device-width, initial-scale=1"" />
@@ -60,15 +60,16 @@ app.MapGet("/", (HttpContext context) => {
                 color: rgb(25, 25, 25);
                 font-family: sans-serif;
             }
+            body {
+                margin: 0;
+                padding: 0;
+            }
             #body-content {
                 background-color: rgba(225, 225, 255, 0.4);
                 border: 1px solid black;
                 border-radius: 25px;
-                width: 80vw;
-                margin-top: 50px;
-                margin-left: 25px;
-                margin-right: 25px;
-                padding: 30px;
+                margin: 5%;
+                padding: 2em;
                 text-align: center;
             }
             #body-content h1 {
@@ -79,13 +80,17 @@ app.MapGet("/", (HttpContext context) => {
             }
             #body-content #share {
                 min-height: 75px;
-                visibility: hidden;
+                opacity: 0;
+                transition: opacity 0.3s;
+                -webkit-transition: opacity 0.3s;
             }
             #foot-content {
-                margin-top: 10vh;
-                width: 100%;
-                text-align: center;
                 background-color: rgba(225, 225, 255, 0.5);
+                border: 1px solid black;
+                width: 100%;
+                margin-top: 15vh;
+                padding: 0.4em;
+                text-align: center;
             }
             a, a:visited, a:active {
                 color: rgb(25, 25, 175);
@@ -104,14 +109,12 @@ app.MapGet("/", (HttpContext context) => {
                 <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
         </div>
-    </body>
-    <foot>
         <div id=""foot-content"">
             Photo by <a target=""unsplash"" href=""https://unsplash.com/@emilianobar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Emiliano Bar</a> on <a target=""unsplash"" href=""https://unsplash.com/s/photos/prison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Unsplash</a>
         </div>
-    </foot>
+    </body>
     <script>
-        window.setTimeout(1000, () => document.getElementById(""share"").style.visibility = ""visible"");
+        window.setTimeout(1000, () => document.getElementById(""share"").style.opacity = 1);
     </script>
 </html>
 ";
