@@ -18,36 +18,67 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
     string notYet = @$"No, not yet.<p class=""emoji"">{randomNotIndictedEmoji}</p>";
     string no = @$"No, and they won't be.<p class=""emoji"">{randomNotIndictedEmoji}</p>";
 
+    name = name.ToLower();
+
+    var autocorrect = new Dictionary<string, string> {
+        { "matt-geatz", "matt-gaetz" },
+        { "geatz", "matt-gaetz" },
+        { "theformerguy", "the-former-guy" },
+        { "rapeymcforehead", "matt-gaetz" }
+    };
+
+    autocorrect.TryGetValue(name, out var correctName);
+    name = correctName ?? name;
+
+    var aliases = new Dictionary<string, string> {
+        { "the-former-guy", "the-former-guy" },
+        { "tfg", "the-former-guy" },
+        { "45", "the-former-guy" },
+        { "steve-bannon", "steve-bannon" },
+        { "bannon", "steve-bannon" },
+        { "michael-flynn", "michael-flynn" },
+        { "flynn", "michael-flynn" },
+        { "matt-gaetz", "matt-gaetz" },
+        { "gaetz", "matt-gaetz" },
+        { "rapey-mcforehead", "matt-gaetz" }
+    };
+
+    aliases.TryGetValue(name, out var criminalName);
+    name = criminalName ?? name;
+
     var criminal = name switch {
-        "the-former-guy" or "tfg" or "45" or "www" or "" or null => new Criminal {
+        "the-former-guy" => new Criminal {
             Name = "The Former Guy",
             Url = "https://twitter.com/search?q=%23TFG&f=live",
             Message = notYet
         },
-        "steve-bannon" or "bannon" => new Criminal {
+        "steve-bannon" => new Criminal {
             Name = "Steve Bannon",
             Url = "https://twitter.com/search?q=steve%20bannon%20perp%20walk&f=video",
             Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.<p class=""emoji"">{randomIndictedEmoji}</p><p>Unfortunately, he was released without bail.</p><p class=""emoji"">{randomNotIndictedEmoji}</p>"
         },
-        "michael-flynn" or "flynn" => new Criminal {
+        "michael-flynn" => new Criminal {
             Name = "Michael Flynn",
             Url = "https://twitter.com/search?q=Michael%20Flynn&f=live",
             Message = notYet
         },
-        "matt-gaetz" or "gaetz" or "matt-geatz" or "geatz" or "rapey-mcforehead" => new Criminal {
+        "matt-gaetz" => new Criminal {
             Name = "Matt Gaetz",
             Url = "https://twitter.com/search?q=%23RapeyMcForehead&f=live",
             Message = notYet
         },
         _ => new Criminal {
             Name = name,
-            Message = @"Not that we know of. Tweet <a target=""share"" href=""https://twitter.com/IndictedYet"">@IndictedYet</a> if you have an update!"
+            Message = @"Not that we know of. <a target=""github"" href=""https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs"">Submit a contribution</a> if you have an update!"
         }
     };
 
     var linkedName = criminal.Url is not null ?
         $@"<a target=""twitter"" href=""{criminal.Url}"">{criminal.Name}</a>" :
         criminal.Name;
+
+    var suggestions = aliases.Where(alias => alias.Value != criminalName).Select(alias => alias.Key);
+    var suggestedCriminal = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
 
     context.Response.ContentType = "text/html; charset=utf-8";
 
@@ -99,6 +130,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
                 transition: opacity 0.3s;
                 opacity: 1;
             }
+            #suggestion {
+                font-size: xx-large;
+                font-weight: bold;
+            }
             #foot-content {
                 background-color: rgba(225, 225, 255, 0.75);
                 border-top: 2px solid black;
@@ -129,6 +164,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
             <div id=""share"" class=""invisible"">
                 <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {criminal.Name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
+            <p id=""suggestion"">
+                " + @$"What about <a href=""{suggestedCriminal}"">{suggestedCriminal}</a>?" + @"
+            </p>
         </div>
         <div id=""foot-content"">
             <a href=""github"" href=""https://github.com/jeffhandley/indictedyet"">Website</a> by <a target=""twitter"" href=""https://twitter.com/JeffHandley"">@JeffHandley</a>.
