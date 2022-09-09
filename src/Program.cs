@@ -66,24 +66,22 @@ app.MapGet("/", (HttpContext context) => {
                 width: 80vw;
                 margin-top: 50px;
                 margin-left: 10vw;
+                margin-right: 10vw;
                 padding: 30px;
                 text-align: center;
             }
             #body-content h1 {
-                font-size: 400%;
+                font-size: 300%;
             }
             #body-content h2 {
-                font-size: 250%;
+                font-size: 180%;
             }
             #body-content #share {
                 min-height: 75px;
             }
             #foot-content {
-                position: absolute;
-                top: 100vh;
-                left: 0;
+                margin-top: 10vh;
                 width: 100vw;
-                margin-top: -30px;
                 text-align: center;
                 background-color: rgba(225, 225, 255, 0.5);
             }
