@@ -63,11 +63,11 @@ app.MapGet("/", (HttpContext context) => {
             #body-content {
                 background-color: rgba(225, 225, 255, 0.4);
                 border: 1px solid black;
-                border-radius: 30px;
+                border-radius: 25px;
                 width: 80vw;
                 margin-top: 50px;
-                margin-left: 10vw;
-                margin-right: 10vw;
+                margin-left: 25px;
+                margin-right: 25px;
                 padding: 30px;
                 text-align: center;
             }
@@ -79,10 +79,11 @@ app.MapGet("/", (HttpContext context) => {
             }
             #body-content #share {
                 min-height: 75px;
+                visibility: hidden;
             }
             #foot-content {
                 margin-top: 10vh;
-                width: 100vw;
+                width: 100%;
                 text-align: center;
                 background-color: rgba(225, 225, 255, 0.5);
             }
@@ -109,6 +110,9 @@ app.MapGet("/", (HttpContext context) => {
             Photo by <a target=""unsplash"" href=""https://unsplash.com/@emilianobar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Emiliano Bar</a> on <a target=""unsplash"" href=""https://unsplash.com/s/photos/prison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Unsplash</a>
         </div>
     </foot>
+    <script>
+        window.setTimeout(1000, () => document.getElementById(""share"").style.visibility = ""visible"");
+    </script>
 </html>
 ";
 });
