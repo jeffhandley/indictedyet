@@ -6,24 +6,21 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.UseStaticFiles();
+app.UseRouting();
 
-app.MapGet("/", (HttpContext context) => {
+app.MapGet("{criminal=the-former-guy}", (HttpContext context, string criminal) => {
     string[] noEmojis = new[] { "😒","🤨","😤","😡","🤬","😾","😑","🙄","😣","😫","😖","😞","😟","😧","😩" };
     string randomNoEmoji = noEmojis[RandomNumberGenerator.GetInt32(noEmojis.Length)];
 
     string notYet = $"No, not yet.<p>{randomNoEmoji}</p>";
     string no = $"No, and they won't be.<p>{randomNoEmoji}</p>";
 
-    var host = context.Request.Host.Host;
-    var subhostLength = host.IndexOf('.');
-    var subhost = subhostLength > 0 ? host.Substring(0, subhostLength).ToLower() : host.ToLower();
-
-    var name = subhost switch {
-        "the-former-guy" or "tfg" or "45" or "he" => "The Former Guy",
+    var name = criminal switch {
+        "the-former-guy" or "tfg" or "45" or "www" or "" or null => "The Former Guy",
         "steve-bannon" or "bannon" => "Steve Bannon",
         "michael-flynn" or "flynn" => "Michael Flynn",
         "matt-gaetz" or "gaetz" or "rapey-mcforehead" => "Rapey McForehead",
-        _ => subhost
+        _ => criminal
     };
 
     var haveThey = name switch {
@@ -121,7 +118,7 @@ app.MapGet("/", (HttpContext context) => {
         </div>
     </body>
     <script>
-        window.setTimeout(() => { document.getElementById(""share"").className = """"; console.log(document.getElementById(""share"").className);}, 500);
+        window.setTimeout(() => { document.getElementById(""share"").className = """"; console.log(document.getElementById(""share"").className);}, 250);
     </script>
 </html>
 ";
