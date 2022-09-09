@@ -134,8 +134,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
             </div>
         </div>
         <div id=""foot-content"">
-            Website by <a target=""twitter"" href=""https://twitter.com/JeffHandley"">@JeffHandley</a>.
-            <a href=""github"" href=""https://github.com/jeffhandley/indictedyet"">View code on GitHub</a>.
+            <a href=""github"" href=""https://github.com/jeffhandley/indictedyet"">Website</a> by <a target=""twitter"" href=""https://twitter.com/JeffHandley"">@JeffHandley</a>.
             Photo by <a target=""unsplash"" href=""https://unsplash.com/@emilianobar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Emiliano Bar</a> on <a target=""unsplash"" href=""https://unsplash.com/s/photos/prison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Unsplash</a>.
         </div>
     </body>
