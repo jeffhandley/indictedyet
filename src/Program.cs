@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.Extensions;
+using System.Globalization;
 using System.Security.Cryptography;
 using static System.Text.Encoding;
 
@@ -76,7 +77,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
             Message = notYet
         },
         _ => new Criminal {
-            Name = name,
+            Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
             Message = @"Not that we know of. <a target=""github"" href=""https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs"">Submit a contribution</a> if you have an update!"
         }
     };
