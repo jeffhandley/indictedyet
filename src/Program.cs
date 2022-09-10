@@ -130,7 +130,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         "stephen-miller" => new Criminal {
             Name = "Stephen Miller",
             Url = "https://twitter.com/search?q=%23StephenMiller&f=live",
-            Message = @$"Not yet, but he was <a target=""story"" href=""https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html">subpoenaed by the grand jury on September 9, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
+            Message = @$"Not yet, but he was <a target=""story"" href=""https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html"">subpoenaed by the grand jury on September 9, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         },
         _ => new Criminal {
             Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
