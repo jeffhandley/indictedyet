@@ -9,7 +9,7 @@ var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
+app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     string[] notIndictedEmojis = new[] { "😒","🤨","😤","😡","🤬","😾","😑","🙄","😣","😫","😖","😞","😟","😧","😩" };
     string[] indictedEmojis = new[] { "🙂","😏","😆","😅","😀","🎉","🔥","😁","😂","🤣","😃","😄","😶‍🌫️","😝","😛","🤪","🥳"};
 
@@ -19,32 +19,38 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
     string notYet = @$"No, not yet.<p class=""emoji"">{randomNotIndictedEmoji}</p>";
     string no = @$"No, and they won't be.<p class=""emoji"">{randomNotIndictedEmoji}</p>";
 
-    name = name.ToLower();
+    var name = ((string)context.GetRouteValue("name")).ToLower();
 
-    var autocorrect = new Dictionary<string, string> {
+    var redirects = new Dictionary<string, string> {
+        { "theformerguy", "the-former-guy" },
+        { "45", "the-former-guy" },
+        { "mattgaetz", "matt-gaetz" },
+        { "gaetz", "matt-gaetz" },
         { "matt-geatz", "matt-gaetz" },
         { "geatz", "matt-gaetz" },
-        { "theformerguy", "the-former-guy" },
-        { "rapeymcforehead", "matt-gaetz" },
+        { "rapeymcforehead", "rapey-mcforehead" },
+        { "stevebannon", "steve-bannon" },
+        { "bannon", "steve-bannon" },
+        { "michaelflynn", "michael-flynn" },
+        { "flynn", "michael-flynn" },
+        { "billbarr", "bill-barr" },
+        { "barr", "bill-barr" },
         { "bar", "bill-barr" },
     };
 
-    autocorrect.TryGetValue(name, out var correctName);
-    name = correctName ?? name;
+    if (redirects.TryGetValue(name, out var redirection)) {
+        context.Response.Redirect($"/{redirection}", true, true);
+        name = redirection;
+    }
 
     var aliases = new Dictionary<string, string> {
         { "the-former-guy", "the-former-guy" },
         { "tfg", "the-former-guy" },
-        { "45", "the-former-guy" },
         { "steve-bannon", "steve-bannon" },
-        { "bannon", "steve-bannon" },
         { "michael-flynn", "michael-flynn" },
-        { "flynn", "michael-flynn" },
         { "matt-gaetz", "matt-gaetz" },
-        { "gaetz", "matt-gaetz" },
         { "rapey-mcforehead", "matt-gaetz" },
         { "bill-barr", "bill-barr" },
-        { "barr", "bill-barr" },
     };
 
     aliases.TryGetValue(name, out var criminalName);

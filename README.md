@@ -8,7 +8,7 @@ Follow [@IndictedYet](https://twitter.com/IndictedYet) for updates when we add n
 
 Want to add one of The Former Guy's associates to our site? Great!
 
-Create a pull request by editing [Program.cs](https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs). There's a list of autocorrect handlers, a list of aliases, and then a Name, Url, and Message for each Criminal. We'd love your help creating a comprehensive list for the site!
+Create a pull request by editing [Program.cs](https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs). There's a list of redirect handlers, a list of acceptable aliases, and then a Name, Url, and Message for each criminal. We'd love your help creating a comprehensive list for the site!
 
 ## License
 
