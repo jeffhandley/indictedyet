@@ -24,7 +24,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
         { "matt-geatz", "matt-gaetz" },
         { "geatz", "matt-gaetz" },
         { "theformerguy", "the-former-guy" },
-        { "rapeymcforehead", "matt-gaetz" }
+        { "rapeymcforehead", "matt-gaetz" },
+        { "bar", "bill-barr" },
     };
 
     autocorrect.TryGetValue(name, out var correctName);
@@ -40,7 +41,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
         { "flynn", "michael-flynn" },
         { "matt-gaetz", "matt-gaetz" },
         { "gaetz", "matt-gaetz" },
-        { "rapey-mcforehead", "matt-gaetz" }
+        { "rapey-mcforehead", "matt-gaetz" },
+        { "bill-barr", "bill-barr" },
+        { "barr", "bill-barr" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -54,7 +57,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
         },
         "steve-bannon" => new Criminal {
             Name = "Steve Bannon",
-            Url = "https://twitter.com/search?q=steve%20bannon%20perp%20walk&f=video",
+            Url = "https://twitter.com/search?q=Steve%20Bannon%20perp%20walk&f=video",
             Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.<p class=""emoji"">{randomIndictedEmoji}</p><p>Unfortunately, he was released without bail.</p><p class=""emoji"">{randomNotIndictedEmoji}</p>"
         },
         "michael-flynn" => new Criminal {
@@ -65,6 +68,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
         "matt-gaetz" => new Criminal {
             Name = "Matt Gaetz",
             Url = "https://twitter.com/search?q=%23RapeyMcForehead&f=live",
+            Message = notYet
+        },
+        "bill-barr" => new Criminal {
+            Name = "Bill Barr",
+            Url = "https://twitter.com/search?q=Bill%20Barr&f=live",
             Message = notYet
         },
         _ => new Criminal {
