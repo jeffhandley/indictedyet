@@ -188,12 +188,14 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             }
             #body-content h2 {
                 font-size: 180%;
+                transition: opacity 0.3s;
+                transition-delay: 0.5s;
             }
             #share {
                 min-height: 40px;
                 padding-top: 10px;
                 transition: opacity 0.3s;
-                transition-delay: 0.25s;
+                transition-delay: 1.25s;
             }
             #embedded-tweet {
                 min-height: 600px;
@@ -239,7 +241,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             <h1>" +
                 $"Is {linkedName} Indicted Yet?" + @"
             </h1>
-            <h2>" +
+            <h2 class=""delayed-visibility"">" +
                 criminal.Message + @"
             </h2>
             <div id=""share"" class=""delayed-visibility"">
