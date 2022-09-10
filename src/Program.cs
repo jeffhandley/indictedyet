@@ -31,6 +31,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "jr", "donjr" },
         { "don-jr", "donjr" },
         { "don-junior", "donjr" },
+        { "rogerstone", "roger-stone" },
+        { "roger", "roger-stone" },
+        { "stone", "roger-stone" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -48,6 +51,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "bill-barr", "bill-barr" },
         { "ivanka", "ivanka" },
         { "donjr", "donjr" },
+        { "roger-stone", "roger-stone" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -100,6 +104,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         "donjr" => new Criminal {
             Name = "Don Jr.",
             Url = "https://twitter.com/search?q=%23DonJr&f=live",
+            Message = notYet
+        },
+        "roger-stone" => new Criminal {
+            Name = "Roger Stone",
+            Url = "https://twitter.com/search?q=%23RogerStone&f=live",
             Message = notYet
         },
         _ => new Criminal {
@@ -220,7 +229,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             </p>
         </div>
         <div id=""foot-content"">
-            <a href=""github"" href=""https://github.com/jeffhandley/indictedyet"">Website</a> by <a target=""twitter"" href=""https://twitter.com/JeffHandley"">@JeffHandley</a>.
+            <a target=""github"" href=""https://github.com/jeffhandley/indictedyet"">Website</a> by <a target=""twitter"" href=""https://twitter.com/JeffHandley"">@JeffHandley</a>.
             Photo by <a target=""unsplash"" href=""https://unsplash.com/@emilianobar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Emiliano Bar</a> on <a target=""unsplash"" href=""https://unsplash.com/s/photos/prison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"">Unsplash</a>.
         </div>
     </body>
