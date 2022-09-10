@@ -10,15 +10,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapGet("{name=the-former-guy}", (HttpContext context) => {
-    string[] notIndictedEmojis = new[] { "😒","🤨","😤","😡","🤬","😾","😑","🙄","😣","😫","😖","😞","😟","😧","😩" };
-    string[] indictedEmojis = new[] { "🙂","😏","😆","😅","😀","🎉","🔥","😁","😂","🤣","😃","😄","😶‍🌫️","😝","😛","🤪","🥳"};
-
-    string randomNotIndictedEmoji = notIndictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)];
-    string randomIndictedEmoji = indictedEmojis[RandomNumberGenerator.GetInt32(indictedEmojis.Length)];
-
-    string notYet = @$"No, not yet.<p class=""emoji"">{randomNotIndictedEmoji}</p>";
-    string no = @$"No, and they won't be.<p class=""emoji"">{randomNotIndictedEmoji}</p>";
-
     var name = ((string)context.GetRouteValue("name")).ToLower();
 
     var redirects = new Dictionary<string, string> {
@@ -56,6 +47,15 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     aliases.TryGetValue(name, out var criminalName);
     name = criminalName ?? name;
 
+    string[] notIndictedEmojis = new[] { "😒","🤨","😤","😡","🤬","😾","😑","🙄","😣","😫","😖","😞","😟","😧","😩" };
+    string[] indictedEmojis = new[] { "🙂","😏","😆","😅","😀","🎉","🔥","😁","😂","🤣","😃","😄","😶‍🌫️","😝","😛","🤪","🥳"};
+
+    string randomNotIndictedEmoji = notIndictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)];
+    string randomIndictedEmoji = indictedEmojis[RandomNumberGenerator.GetInt32(indictedEmojis.Length)];
+
+    string notYet = @$"No, not yet.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>";
+    string no = @$"No, and they won't be.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>";
+
     var criminal = name switch {
         "the-former-guy" => new Criminal {
             Name = "The Former Guy",
@@ -65,7 +65,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         "steve-bannon" => new Criminal {
             Name = "Steve Bannon",
             Url = "https://twitter.com/search?q=Steve%20Bannon%20perp%20walk&f=video",
-            Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.<p class=""emoji"">{randomIndictedEmoji}</p><p>Unfortunately, he was released without bail.</p><p class=""emoji"">{randomNotIndictedEmoji}</p>"
+            Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money." +
+                      @"<div id=""embedded-tweet"" class=""delayed-visibility"">" +
+                      @"<blockquote class=""twitter-tweet""><p lang=""en"" dir=""ltr"">Perp walk for Steve Bannon. The far-right former Trump aide, who is charged with money-laundering, conspiracy and fraud, seems as delusional as ever. <a href=""https://t.co/UDwIgIel7C"">pic.twitter.com/UDwIgIel7C</a></p>&mdash; Ian Fraser (@Ian_Fraser) <a href=""https://twitter.com/Ian_Fraser/status/1568297092124413953?ref_src=twsrc%5Etfw"">September 9, 2022</a></blockquote> <script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>" +
+                      @"</div>" +
+                      @$"<p>Unfortunately, he was released without bail.</p><p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>"
         },
         "michael-flynn" => new Criminal {
             Name = "Michael Flynn",
@@ -141,9 +145,16 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             }
             #share {
                 min-height: 40px;
-                padding-top: 25px;
+                padding-top: 10px;
                 transition: opacity 0.3s;
-                opacity: 1;
+                transition-delay: 0.25s;
+            }
+            #embedded-tweet {
+                min-height: 600px;
+                padding-top: 25px;
+                text-align: -webkit-center;
+                transition: opacity 0.3s;
+                transition-delay: 1.0s;
             }
             #suggestion {
                 font-size: xx-large;
@@ -160,11 +171,12 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             a, a:visited, a:active {
                 color: rgb(25, 25, 175);
             }
-            .invisible {
+            .delayed-visibility {
                 opacity: 0!important;
             }
             .emoji {
                 font-size: xxx-large;
+                transition: opacity 0.3s;
             }
         </style>
     </head>
@@ -184,7 +196,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             <h2>" +
                 criminal.Message + @"
             </h2>
-            <div id=""share"" class=""invisible"">
+            <div id=""share"" class=""delayed-visibility"">
                 <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {criminal.Name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
             <p id=""suggestion"">
@@ -197,7 +209,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         </div>
     </body>
     <script>
-        window.setTimeout(() => { document.getElementById(""share"").className = """"; console.log(document.getElementById(""share"").className);}, 250);
+        window.setTimeout(() => [...document.getElementsByClassName(""delayed-visibility"")].forEach(e => e.classList.remove(""delayed-visibility"")), 250);
     </script>
 </html>
 ";
