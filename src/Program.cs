@@ -34,6 +34,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "rogerstone", "roger-stone" },
         { "roger", "roger-stone" },
         { "stone", "roger-stone" },
+        { "ginni", "ginni-thomas" },
+        { "clarence", "clarence-thomas" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -53,9 +55,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "donjr", "donjr" },
         { "roger-stone", "roger-stone" },
         { "ginni-thomas", "ginni-thomas" },
-        { "ginni", "ginni-thomas" },
         { "clarence-thomas", "clarence-thomas" },
-        { "clarence", "clarence-thomas" },
         { "stephen-miller", "stephen-miller" },
         { "miller", "stephen-miller" },
     };
