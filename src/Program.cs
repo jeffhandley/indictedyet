@@ -27,6 +27,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "billbarr", "bill-barr" },
         { "barr", "bill-barr" },
         { "bar", "bill-barr" },
+        { "junior", "donjr" },
+        { "jr", "donjr" },
+        { "don-jr", "donjr" },
+        { "don-junior", "donjr" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -42,6 +46,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "matt-gaetz", "matt-gaetz" },
         { "rapey-mcforehead", "matt-gaetz" },
         { "bill-barr", "bill-barr" },
+        { "ivanka", "ivanka" },
+        { "donjr", "donjr" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -84,6 +90,16 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         "bill-barr" => new Criminal {
             Name = "Bill Barr",
             Url = "https://twitter.com/search?q=Bill%20Barr&f=live",
+            Message = notYet
+        },
+        "ivanka" => new Criminal {
+            Name = "Ivanka",
+            Url = "https://twitter.com/search?q=%23Ivanka&f=live",
+            Message = notYet
+        },
+        "donjr" => new Criminal {
+            Name = "Don Jr.",
+            Url = "https://twitter.com/search?q=%23DonJr&f=live",
             Message = notYet
         },
         _ => new Criminal {
