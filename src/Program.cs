@@ -204,7 +204,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 padding-top: 25px;
                 text-align: -webkit-center;
                 transition: opacity 0.3s;
-                transition-delay: 1.2s;
+                transition-delay: 3.0s;
             }
             #suggestion {
                 font-size: xx-large;
