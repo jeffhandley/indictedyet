@@ -52,6 +52,12 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "ivanka", "ivanka" },
         { "donjr", "donjr" },
         { "roger-stone", "roger-stone" },
+        { "ginni-thomas", "ginni-thomas" },
+        { "ginni", "ginni-thomas" },
+        { "clarence-thomas", "clarence-thomas" },
+        { "clarence", "clarence-thomas" },
+        { "stephen-miller", "stephen-miller" },
+        { "miller", "stephen-miller" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -110,6 +116,21 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Name = "Roger Stone",
             Url = "https://twitter.com/search?q=%23RogerStone&f=live",
             Message = notYet
+        },
+        "ginni-thomas" => new Criminal {
+            Name = "Ginni Thomas",
+            Url = "https://twitter.com/search?q=%23GinniThomas&f=live",
+            Message = notYet
+        },
+        "clarence-thomas" => new Criminal {
+            Name = "Clarence Thomas",
+            Url = "https://twitter.com/search?q=%23ClarenceThomas&f=live",
+            Message = notYet
+        },
+        "stephen-miller" => new Criminal {
+            Name = "Stephen Miller",
+            Url = "https://twitter.com/search?q=%23StephenMiller&f=live",
+            Message = @$"Not yet, but he was <a target=""story"" href=""https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html">subpoenaed by the grand jury on September 9, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         },
         _ => new Criminal {
             Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
