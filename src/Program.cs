@@ -185,28 +185,32 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             }
             #body-content h1 {
                 font-size: 300%;
+                transition: opacity 0.3s;
+                transition-delay: 0.2s;
             }
             #body-content h2 {
                 font-size: 180%;
                 transition: opacity 0.3s;
-                transition-delay: 0.5s;
+                transition-delay: 1.0s;
             }
             #share {
                 min-height: 40px;
                 padding-top: 10px;
                 transition: opacity 0.3s;
-                transition-delay: 1.25s;
+                transition-delay: 1.8s;
             }
             #embedded-tweet {
                 min-height: 600px;
                 padding-top: 25px;
                 text-align: -webkit-center;
                 transition: opacity 0.3s;
-                transition-delay: 1.0s;
+                transition-delay: 1.2s;
             }
             #suggestion {
                 font-size: xx-large;
                 font-weight: bold;
+                transition: opacity 0.3s;
+                transition-delay: 2.0s;
             }
             #foot-content {
                 background-color: rgba(225, 225, 255, 0.75);
@@ -225,6 +229,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             .emoji {
                 font-size: xxx-large;
                 transition: opacity 0.3s;
+                transition-delay: 1.3s;
             }
         </style>
     </head>
@@ -238,7 +243,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     </script>
     <body>
         <div id=""body-content"">
-            <h1>" +
+            <h1 class=""delayed-visibility"">" +
                 $"Is {linkedName} Indicted Yet?" + @"
             </h1>
             <h2 class=""delayed-visibility"">" +
@@ -247,7 +252,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             <div id=""share"" class=""delayed-visibility"">
                 <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {criminal.Name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
-            <p id=""suggestion"">
+            <p id=""suggestion"" class=""delayed-visibility"">
                 " + @$"What about <a href=""{suggestedCriminal}"">{suggestedCriminal}</a>?" + @"
             </p>
         </div>
