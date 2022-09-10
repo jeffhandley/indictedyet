@@ -153,6 +153,14 @@ app.MapGet("{name=the-former-guy}", (HttpContext context, string name) => {
             }
         </style>
     </head>
+    <!-- Google tag (gtag.js) -->
+    <script async src=""https://www.googletagmanager.com/gtag/js?id=G-1CEGWC1TSR""></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1CEGWC1TSR');
+    </script>
     <body>
         <div id=""body-content"">
             <h1>" +
