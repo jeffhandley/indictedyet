@@ -36,6 +36,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "stone", "roger-stone" },
         { "ginni", "ginni-thomas" },
         { "clarence", "clarence-thomas" },
+        { "miller", "stephen-miller" },
+        { "gohmert", "louie-gohmert" },
+        { "gomert", "louie-gohmert" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -57,7 +60,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "ginni-thomas", "ginni-thomas" },
         { "clarence-thomas", "clarence-thomas" },
         { "stephen-miller", "stephen-miller" },
-        { "miller", "stephen-miller" },
+        { "louie-gohmert", "louie-gohmert" },
+
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -131,6 +135,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Name = "Stephen Miller",
             Url = "https://twitter.com/search?q=%23StephenMiller&f=live",
             Message = @$"Not yet, but he was <a target=""story"" href=""https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html"">subpoenaed by the grand jury on September 9, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
+        },
+        "louie-gohmert" => new Criminal {
+            Name = "Louie Gohmert",
+            Url = "https://twitter.com/search?q=%23LouieGohmert&f=live",
+            Message = notYet
         },
         _ => new Criminal {
             Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
