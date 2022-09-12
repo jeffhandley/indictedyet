@@ -141,7 +141,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
 
     var suggestions = aliases.Where(alias => alias.Value != criminalName).Select(alias => alias.Key);
     var suggestedCriminal = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
-    var suggestedCriminalName = criminals[suggestedCriminal];
+    var suggestedCriminalName = criminals[suggestedCriminal].Name;
 
     context.Response.ContentType = "text/html; charset=utf-8";
 
