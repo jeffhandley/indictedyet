@@ -273,6 +273,6 @@ struct Criminal
     public string Url;
     public string Message;
     
-    public Criminal() { }
+    public Criminal() : this("") { }
     public Criminal(string name) => Name = name;
 }
