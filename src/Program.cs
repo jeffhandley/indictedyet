@@ -102,7 +102,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         },
         "matt-gaetz" => new Criminal {
             Name = "Matt Gaetz",
-            Hashtag = "%23RapeyMcForehead",
+            Hashtag = "#RapeyMcForehead",
         },
         "bill-barr" => new Criminal {
             Name = "Bill Barr",
@@ -145,8 +145,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         }
     };
 
-    criminal.Hashtag ??= "%23" + criminal.Name.Replace(" ", "");
-    criminal.Url ??= $"https://twitter.com/search?q={criminal.Hashtag}&f=live";
+    criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "");
+    criminal.Url ??= $"https://twitter.com/search?q={criminal.Hashtag.Replace("#", "%23")}&f=live";
     criminal.Message ??= notYet;
 
     var linkedName = $@"<a target=""twitter"" href=""{criminal.Url}"">{criminal.Name}</a>";
