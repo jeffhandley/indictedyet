@@ -129,8 +129,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         Message = @"Not that we know of. <a target=""github"" href=""https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs"">Submit a contribution</a> if you have an update!"
     };
            
-    criminals.TryGetValue(name, out var criminal);
-    criminal ??= defaultCriminal;
+    if (!criminals.TryGetValue(name, out var criminal)) {
+        criminal ??= defaultCriminal;
+    }
+    
     criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "");
     criminal.Url ??= $"https://twitter.com/search?q={criminal.Hashtag.Replace("#", "%23")}&f=live";
     criminal.Message ??= notYet;
