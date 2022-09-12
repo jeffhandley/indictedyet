@@ -85,71 +85,53 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     string notYet = @$"No, not yet.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>";
     string no = @$"No, and they won't be.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>";
 
-    var criminal = name switch {
-        "the-former-guy" => new Criminal {
+    var criminals = new Dictionary<string, Criminal> {
+        { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
             Message =  @"No, not yet.<p>However, he <a target=""twitter"" href=""https://twitter.com/search?q=%22Trump%20is%20in%20DC%22"">unexpectedly arrived in DC late on September 11, 2022</a> apparently in golf attire and shoes.</p><p class=""emoji delayed-visibility"">🤞</p>"
-        },
-        "steve-bannon" => new Criminal {
+        } },
+        { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
             Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money." +
                       @"<div id=""embedded-tweet"" class=""delayed-visibility"">" +
                       @"<blockquote class=""twitter-tweet""><p lang=""en"" dir=""ltr"">Perp walk for Steve Bannon. The far-right former Trump aide, who is charged with money-laundering, conspiracy and fraud, seems as delusional as ever. <a href=""https://t.co/UDwIgIel7C"">pic.twitter.com/UDwIgIel7C</a></p>&mdash; Ian Fraser (@Ian_Fraser) <a href=""https://twitter.com/Ian_Fraser/status/1568297092124413953?ref_src=twsrc%5Etfw"">September 9, 2022</a></blockquote> <script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>" +
                       @"</div>" +
                       @$"<p>Unfortunately, he was released without bail.</p><p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>"
-        },
-        "michael-flynn" => new Criminal {
-            Name = "Michael Flynn",
-        },
-        "matt-gaetz" => new Criminal {
+        } },
+        { "michael-flynn", new Criminal("Michael Flynn") },
+        { "matt-gaetz", new Criminal {
             Name = "Matt Gaetz",
             Hashtag = "#RapeyMcForehead",
-        },
-        "bill-barr" => new Criminal {
-            Name = "Bill Barr",
-        },
-        "ivanka" => new Criminal {
-            Name = "Ivanka",
-        },
-        "donjr" => new Criminal {
-            Name = "Don Jr",
-        },
-        "roger-stone" => new Criminal {
-            Name = "Roger Stone",
-        },
-        "ginni-thomas" => new Criminal {
-            Name = "Ginni Thomas",
-        },
-        "clarence-thomas" => new Criminal {
-            Name = "Clarence Thomas",
-        },
-        "stephen-miller" => new Criminal {
+        } },
+        { "bill-barr", new Criminal("Bill Barr") },
+        { "ivanka", new Criminal("Ivanka") },
+        { "donjr", new Criminal("Don Jr") },
+        { "roger-stone", new Criminal("Roger Stone") },
+        { "ginni-thomas", new Criminal("Ginni Thomas") },
+        { "clarence-thomas", new Criminal("Clarence Thomas") },
+        { "stephen-miller", new Criminal {
             Name = "Stephen Miller",
             Message = @$"Not yet, but he was <a target=""story"" href=""https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html"">subpoenaed by the grand jury on September 9, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
-        },
-        "louie-gohmert" => new Criminal {
-            Name = "Louie Gohmert",
-        },
-        "newt-gingrich" => new Criminal {
-            Name = "Newt Gingrich",
-        },
-        "jim-jordan" => new Criminal {
+        } },
+        { "louie-gohmert", new Criminal("Louie Gohmert") },
+        { "newt-gingrich", new Criminal("Newt Gingrich") },
+        { "jim-jordan", new Criminal {
             Name = "Jim Jordan",
             Hashtag = "#GymJordan"
-        },
-        "lindsey-graham" => new Criminal {
-            Name = "Lindsey Graham",
-        },
-        "jared-kushner" => new Criminal {
-            Name = "Jared Kushner",
-        },
-        _ => new Criminal {
+        } },
+        { "lindsey-graham", new Criminal("Lindsey Graham") },
+        { "jared-kushner", new Criminal("Jared Kushner") },
+    };
+    
+    var defaultCriminal = new Criminal {
             Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
             Message = @"Not that we know of. <a target=""github"" href=""https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs"">Submit a contribution</a> if you have an update!"
         }
     };
-
+           
+    criminals.TryGetValue(name, out var criminal);
+    criminal ??= defaultCriminal;
     criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "");
     criminal.Url ??= $"https://twitter.com/search?q={criminal.Hashtag.Replace("#", "%23")}&f=live";
     criminal.Message ??= notYet;
@@ -158,6 +140,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
 
     var suggestions = aliases.Where(alias => alias.Value != criminalName).Select(alias => alias.Key);
     var suggestedCriminal = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
+    var suggestedCriminalName = criminals[suggestedCriminal];
 
     context.Response.ContentType = "text/html; charset=utf-8";
 
@@ -267,7 +250,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {criminal.Name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
             <p id=""suggestion"" class=""delayed-visibility"">
-                " + @$"What about <a href=""{suggestedCriminal}"">{suggestedCriminal}</a>?" + @"
+                " + @$"What about <a href=""{suggestedCriminal}"">{suggestedCriminalName}</a>?" + @"
             </p>
         </div>
         <div id=""foot-content"">
@@ -290,4 +273,7 @@ struct Criminal
     public string Hashtag;
     public string Url;
     public string Message;
+    
+    public Criminal() { }
+    public Criminal(string name) => Name = name;
 }
