@@ -130,7 +130,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     };
            
     if (!criminals.TryGetValue(name, out var criminal)) {
-        criminal ??= defaultCriminal;
+        criminal = defaultCriminal;
     }
     
     criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "");
