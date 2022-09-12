@@ -39,6 +39,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "miller", "stephen-miller" },
         { "gohmert", "louie-gohmert" },
         { "gomert", "louie-gohmert" },
+        { "gingrich", "newt-gingrich" },
+        { "newt", "newt-gingrich" },
+        { "graham", "lindsey-graham" },
+        { "lindsey", "lindsey-graham" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -61,7 +65,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "clarence-thomas", "clarence-thomas" },
         { "stephen-miller", "stephen-miller" },
         { "louie-gohmert", "louie-gohmert" },
-
+        { "newt-gingrich", "newt-gingrich" },
+        { "jim-jordan", "jim-jordan" },
+        { "gym-jordan", "jim-jordan" },
+        { "lindsey-graham", "lindsey-graham" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -79,12 +86,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     var criminal = name switch {
         "the-former-guy" => new Criminal {
             Name = "The Former Guy",
-            Url = "https://twitter.com/search?q=%23TFG&f=live",
+            Hashtag = "TFG",
             Message =  @"No, not yet.<p>However, he <a target=""twitter"" href=""https://twitter.com/search?q=%22Trump%20is%20in%20DC%22"">unexpectedly arrived in DC late on September 11, 2022</a> apparently in golf attire and shoes.</p><p class=""emoji delayed-visibility"">🤞</p>"
         },
         "steve-bannon" => new Criminal {
             Name = "Steve Bannon",
-            Url = "https://twitter.com/search?q=Steve%20Bannon%20perp%20walk&f=video",
             Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money." +
                       @"<div id=""embedded-tweet"" class=""delayed-visibility"">" +
                       @"<blockquote class=""twitter-tweet""><p lang=""en"" dir=""ltr"">Perp walk for Steve Bannon. The far-right former Trump aide, who is charged with money-laundering, conspiracy and fraud, seems as delusional as ever. <a href=""https://t.co/UDwIgIel7C"">pic.twitter.com/UDwIgIel7C</a></p>&mdash; Ian Fraser (@Ian_Fraser) <a href=""https://twitter.com/Ian_Fraser/status/1568297092124413953?ref_src=twsrc%5Etfw"">September 9, 2022</a></blockquote> <script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>" +
@@ -93,53 +99,45 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         },
         "michael-flynn" => new Criminal {
             Name = "Michael Flynn",
-            Url = "https://twitter.com/search?q=Michael%20Flynn&f=live",
-            Message = notYet
         },
         "matt-gaetz" => new Criminal {
             Name = "Matt Gaetz",
-            Url = "https://twitter.com/search?q=%23RapeyMcForehead&f=live",
-            Message = notYet
+            Hashtag = "%23RapeyMcForehead",
         },
         "bill-barr" => new Criminal {
             Name = "Bill Barr",
-            Url = "https://twitter.com/search?q=Bill%20Barr&f=live",
-            Message = notYet
         },
         "ivanka" => new Criminal {
             Name = "Ivanka",
-            Url = "https://twitter.com/search?q=%23Ivanka&f=live",
-            Message = notYet
         },
         "donjr" => new Criminal {
-            Name = "Don Jr.",
-            Url = "https://twitter.com/search?q=%23DonJr&f=live",
-            Message = notYet
+            Name = "Don Jr",
         },
         "roger-stone" => new Criminal {
             Name = "Roger Stone",
-            Url = "https://twitter.com/search?q=%23RogerStone&f=live",
-            Message = notYet
         },
         "ginni-thomas" => new Criminal {
             Name = "Ginni Thomas",
-            Url = "https://twitter.com/search?q=%23GinniThomas&f=live",
-            Message = notYet
         },
         "clarence-thomas" => new Criminal {
             Name = "Clarence Thomas",
-            Url = "https://twitter.com/search?q=%23ClarenceThomas&f=live",
-            Message = notYet
         },
         "stephen-miller" => new Criminal {
             Name = "Stephen Miller",
-            Url = "https://twitter.com/search?q=%23StephenMiller&f=live",
             Message = @$"Not yet, but he was <a target=""story"" href=""https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html"">subpoenaed by the grand jury on September 9, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         },
         "louie-gohmert" => new Criminal {
             Name = "Louie Gohmert",
-            Url = "https://twitter.com/search?q=%23LouieGohmert&f=live",
-            Message = notYet
+        },
+        "newt-gingrich" => new Criminal {
+            Name = "Newt Gingrich",
+        },
+        "jim-jordan" => new Criminal {
+            Name = "Jim Jordan",
+            Hashtag = "#GymJordan"
+        },
+        "lindsey-graham" => new Criminal {
+            Name = "Lindsey Graham",
         },
         _ => new Criminal {
             Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
@@ -147,9 +145,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         }
     };
 
-    var linkedName = criminal.Url is not null ?
-        $@"<a target=""twitter"" href=""{criminal.Url}"">{criminal.Name}</a>" :
-        criminal.Name;
+    criminal.Hashtag ??= "%23" + criminal.Name.Replace(" ", "");
+    criminal.Url ??= $"https://twitter.com/search?q={criminal.Hashtag}&f=live";
+    criminal.Message ??= notYet;
+
+    var linkedName = $@"<a target=""twitter"" href=""{criminal.Url}"">{criminal.Name}</a>";
 
     var suggestions = aliases.Where(alias => alias.Value != criminalName).Select(alias => alias.Key);
     var suggestedCriminal = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
@@ -282,6 +282,7 @@ app.Run();
 struct Criminal
 {
     public string Name;
+    public string Hashtag;
     public string Url;
     public string Message;
 }
