@@ -125,9 +125,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     };
     
     var defaultCriminal = new Criminal {
-            Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
-            Message = @"Not that we know of. <a target=""github"" href=""https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs"">Submit a contribution</a> if you have an update!"
-        }
+        Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
+        Message = @"Not that we know of. <a target=""github"" href=""https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs"">Submit a contribution</a> if you have an update!"
     };
            
     criminals.TryGetValue(name, out var criminal);
