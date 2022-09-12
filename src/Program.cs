@@ -43,6 +43,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "newt", "newt-gingrich" },
         { "graham", "lindsey-graham" },
         { "lindsey", "lindsey-graham" },
+        { "kushner", "jared-kushner" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -69,6 +70,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "jim-jordan", "jim-jordan" },
         { "gym-jordan", "jim-jordan" },
         { "lindsey-graham", "lindsey-graham" },
+        { "jared-kushner", "jared-kushner" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -138,6 +140,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         },
         "lindsey-graham" => new Criminal {
             Name = "Lindsey Graham",
+        },
+        "jared-kushner" => new Criminal {
+            Name = "Jared Kushner",
         },
         _ => new Criminal {
             Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
