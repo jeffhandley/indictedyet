@@ -44,6 +44,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "graham", "lindsey-graham" },
         { "lindsey", "lindsey-graham" },
         { "kushner", "jared-kushner" },
+        { "meadows", "mark-meadows" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -52,25 +53,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     }
 
     var aliases = new Dictionary<string, string> {
-        { "the-former-guy", "the-former-guy" },
         { "tfg", "the-former-guy" },
-        { "steve-bannon", "steve-bannon" },
-        { "michael-flynn", "michael-flynn" },
-        { "matt-gaetz", "matt-gaetz" },
         { "rapey-mcforehead", "matt-gaetz" },
-        { "bill-barr", "bill-barr" },
-        { "ivanka", "ivanka" },
-        { "donjr", "donjr" },
-        { "roger-stone", "roger-stone" },
-        { "ginni-thomas", "ginni-thomas" },
-        { "clarence-thomas", "clarence-thomas" },
-        { "stephen-miller", "stephen-miller" },
-        { "louie-gohmert", "louie-gohmert" },
-        { "newt-gingrich", "newt-gingrich" },
-        { "jim-jordan", "jim-jordan" },
         { "gym-jordan", "jim-jordan" },
-        { "lindsey-graham", "lindsey-graham" },
-        { "jared-kushner", "jared-kushner" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -122,6 +107,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         } },
         { "lindsey-graham", new Criminal("Lindsey Graham") },
         { "jared-kushner", new Criminal("Jared Kushner") },
+        { "mark-meadows", new Criminal("Mark Meadows") },
     };
     
     var defaultCriminal = new Criminal {
