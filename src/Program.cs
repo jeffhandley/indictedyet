@@ -275,11 +275,11 @@ struct Criminal
     public string Url;
     public string Message;
     
-    public Criminal() : this("") { }
+    public Criminal() : this(null) { }
     public Criminal(string name) {
         Name = name;
-        Hashtag = "";
-        Url = "";
-        Message = "";
+        Hashtag = null;
+        Url = null;
+        Message = null;
     }
 }
