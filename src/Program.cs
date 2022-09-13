@@ -125,10 +125,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
 
     var linkedName = $@"<a target=""twitter"" href=""{criminal.Url}"">{criminal.Name}</a>";
 
-    var suggestions = aliases.Where(alias => alias.Value != criminalName).Select(alias => alias.Key);
+    var suggestions = criminals.Where(c => c.Key != criminalName).Select(c => c.Key);
     var suggestedAlias = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
-    var suggestedCriminal = aliases[suggestedAlias];
-    var suggestedCriminalName = criminals[suggestedCriminal].Name;
+    var suggestedCriminalName = criminals[suggestedAlias].Name;
 
     context.Response.ContentType = "text/html; charset=utf-8";
 
