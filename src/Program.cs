@@ -48,7 +48,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
-        context.Response.Redirect($"/{redirection}", true, true);
+        context.Response.Redirect($"/{redirection}");
         name = redirection;
     }
 
@@ -108,6 +108,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "lindsey-graham", new Criminal("Lindsey Graham") },
         { "jared-kushner", new Criminal("Jared Kushner") },
         { "mark-meadows", new Criminal("Mark Meadows") },
+        { "phil-bryant", new Criminal("Gov. Phil Bryant") },
+        { "brett-favre", new Criminal("Brett Favre") },
     };
     
     var defaultCriminal = new Criminal {
