@@ -89,7 +89,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
-            Message =  @"No, not yet.<p>However, he <a target=""twitter"" href=""https://twitter.com/search?q=%22Trump%20is%20in%20DC%22"">unexpectedly arrived in DC late on September 11, 2022</a> apparently in golf attire and shoes.</p><p class=""emoji delayed-visibility"">🤞</p>"
+            Message =  notYet
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
