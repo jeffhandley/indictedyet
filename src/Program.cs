@@ -56,6 +56,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "tfg", "the-former-guy" },
         { "rapey-mcforehead", "matt-gaetz" },
         { "gym-jordan", "jim-jordan" },
+        { "pillow-guy", "mike-lindell" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -110,6 +111,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "mark-meadows", new Criminal("Mark Meadows") },
         { "phil-bryant", new Criminal("Gov. Phil Bryant") { Hashtag = "Gov. Phil Bryant" } },
         { "brett-favre", new Criminal("Brett Favre") },
+        { "mike-lindell", new Criminal("Mike Lindell, the pillow guy") { Hashtag = "#MikeLindell" } },
     };
     
     var defaultCriminal = new Criminal {
