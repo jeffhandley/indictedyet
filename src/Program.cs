@@ -126,7 +126,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         criminal = defaultCriminal;
     }
     
-    criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "");
+    criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "").Replace(".", "");
     criminal.Url ??= $"https://twitter.com/search?q={criminal.Hashtag.Replace("#", "%23")}&f=live";
     criminal.Message ??= notYet;
 
@@ -241,7 +241,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 criminal.Message + @"
             </h2>
             <div id=""share"" class=""delayed-visibility"">
-                <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {criminal.Name} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
+                <a href=""https://twitter.com/share?ref_src=twsrc%5Etfw"" class=""twitter-share-button"" data-size=""large"" data-text=""" + $"Is {criminal.Hashtag} @IndictedYet?" + @""" data-related=""IndictedYet"" data-show-count=""true"">Tweet</a><script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>
             </div>
             <p id=""suggestion"" class=""delayed-visibility"">
                 " + @$"What about <a href=""{suggestedAlias}"">{suggestedCriminalName}</a>?" + @"
