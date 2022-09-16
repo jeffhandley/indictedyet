@@ -123,7 +123,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Message = @$"No, not yet. But, <a target=""twitter"" href=""https://twitter.com/search?q=lindell%20phone&src=typed_query&f=live"">his phone was seized by the FBI at a Hardee's on September 13, 2022</a>.<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         } },
         { "greg-abbott", new Criminal("Gov. Greg Abbott") { Hashtag = "Gov. Greg Abbott" } },
-        { "ron-desantis" new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis" } },
+        { "ron-desantis", new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis" } },
         { "mtg", new Criminal("Rep. Marjorie Taylor Greene") { Hashtag = "MTG" } },
     };
     
