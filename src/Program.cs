@@ -49,6 +49,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "abbot", "greg-abbott" },
         { "greg-abbot", "greg-abbott" },
         { "desantis", "ron-desantis" },
+        { "marjorie-taylor-greene", "mtg" },
+        { "marjorie-taylor-green", "mtg" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -61,6 +63,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "rapey-mcforehead", "matt-gaetz" },
         { "gym-jordan", "jim-jordan" },
         { "pillow-guy", "mike-lindell" },
+        { "marjorie-nazi-greene", "mtg" },
     };
 
     aliases.TryGetValue(name, out var criminalName);
@@ -119,8 +122,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Hashtag = "#MikeLindell",
             Message = @$"No, not yet. But, <a target=""twitter"" href=""https://twitter.com/search?q=lindell%20phone&src=typed_query&f=live"">his phone was seized by the FBI at a Hardee's on September 13, 2022</a>.<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         } },
-        { "greg-abbott", new Criminal("Gov. Greg Abbott") { Hashtag = "Gov. Greg Abbott") } },
-        { "ron-desantis" new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis") } },
+        { "greg-abbott", new Criminal("Gov. Greg Abbott") { Hashtag = "Gov. Greg Abbott" } },
+        { "ron-desantis" new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis" } },
+        { "mtg", new Criminal("Rep. Marjorie Taylor Greene") { Hashtag = "MTG" } },
     };
     
     var defaultCriminal = new Criminal {
