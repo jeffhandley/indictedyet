@@ -125,6 +125,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "greg-abbott", new Criminal("Gov. Greg Abbott") { Hashtag = "Gov. Greg Abbott" } },
         { "ron-desantis", new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis" } },
         { "mtg", new Criminal("Rep. Marjorie Taylor Greene") { Hashtag = "MTG" } },
+        { "jeffrey-clark", new Criminal("Jeffrey Clark") },
     };
     
     var defaultCriminal = new Criminal {
