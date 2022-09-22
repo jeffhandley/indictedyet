@@ -82,7 +82,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
-            Message =  notYet
+            Message = @$"Not yet.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>But, he was <a target=""story"" href=""https://apnews.com/article/donald-trump-sued-new-york-letitia-james-ec6b3b91b6c8594495ada7d0a2b80a2f"">sued for fraud by the state of NY on September 21, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
