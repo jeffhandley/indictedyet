@@ -82,11 +82,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
-            Message = @$"Not yet.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>But, he was <a target=""story"" href=""https://apnews.com/article/donald-trump-sued-new-york-letitia-james-ec6b3b91b6c8594495ada7d0a2b80a2f"">sued for fraud by the state of NY on September 21, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
+            Message = @$"Not yet.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>But, he was <a target=""story"" href=""https://apnews.com/article/donald-trump-sued-new-york-letitia-james-ec6b3b91b6c8594495ada7d0a2b80a2f"">sued for fraud in New York</a> on September 21, 2022!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
-            Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York on September 8, 2022</a> for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money." +
+            Message = @$"Yes! He was <a target=""story"" href=""https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall"">indicted in New York</a> on September 8, 2022 for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money." +
                       @"<div id=""embedded-tweet"" class=""delayed-visibility"">" +
                       @"<blockquote class=""twitter-tweet""><p lang=""en"" dir=""ltr"">Perp walk for Steve Bannon. The far-right former Trump aide, who is charged with money-laundering, conspiracy and fraud, seems as delusional as ever. <a href=""https://t.co/UDwIgIel7C"">pic.twitter.com/UDwIgIel7C</a></p>&mdash; Ian Fraser (@Ian_Fraser) <a href=""https://twitter.com/Ian_Fraser/status/1568297092124413953?ref_src=twsrc%5Etfw"">September 9, 2022</a></blockquote> <script async src=""https://platform.twitter.com/widgets.js"" charset=""utf-8""></script>" +
                       @"</div>" +
@@ -105,7 +105,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "clarence-thomas", new Criminal("Clarence Thomas") },
         { "stephen-miller", new Criminal {
             Name = "Stephen Miller",
-            Message = @$"Not yet, but he was <a target=""story"" href=""https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html"">subpoenaed by the grand jury on September 9, 2022</a>!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
+            Message = @$"Not yet, but he was <a target=""story"" href=""https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html"">subpoenaed by the grand jury</a> on September 9, 2022!<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         } },
         { "louie-gohmert", new Criminal("Louie Gohmert") },
         { "newt-gingrich", new Criminal("Newt Gingrich") },
@@ -120,7 +120,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "brett-favre", new Criminal("Brett Favre") },
         { "mike-lindell", new Criminal("Mike Lindell, the pillow guy") {
             Hashtag = "#MikeLindell",
-            Message = @$"No, not yet. But, <a target=""twitter"" href=""https://twitter.com/search?q=lindell%20phone&src=typed_query&f=live"">his phone was seized by the FBI at a Hardee's on September 13, 2022</a>.<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
+            Message = @$"No, not yet. But, <a target=""twitter"" href=""https://twitter.com/search?q=lindell%20phone&src=typed_query&f=live"">his phone was seized by the FBI</a> at a Hardee's on September 13, 2022.<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
         } },
         { "greg-abbott", new Criminal("Gov. Greg Abbott") { Hashtag = "Gov. Greg Abbott" } },
         { "ron-desantis", new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis" } },
