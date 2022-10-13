@@ -82,7 +82,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
-            Message = @$"Not yet.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>But, he was <a target=""story"" href=""https://apnews.com/article/donald-trump-sued-new-york-letitia-james-ec6b3b91b6c8594495ada7d0a2b80a2f"">sued for fraud in New York</a> on September 21, 2022! And on the same day, the 11th circuit <a target=""story"" href=""https://www.reuters.com/legal/us-court-lets-investigators-resume-review-classified-records-trump-probe-2022-09-21/"">permitted the DOJ</a> to continue their investigation into classified materials he stole.<p class=""emoji delayed-visibility"">{randomIndictedEmoji}</p>"
+            Message = @$"Not yet.<p class=""emoji delayed-visibility"">{randomNotIndictedEmoji}</p>But on October 13, 2022 the January 6th committee <a target=""twitter"" href=""https://twitter.com/i/events/1580554323045457920"">voted 9-0 to subpoena him</a> for testimony under oath.<p class=""emoji delayed-visibility"">🤞</p>"
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
