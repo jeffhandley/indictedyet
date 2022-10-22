@@ -88,18 +88,17 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Name = "The Former Guy",
             Hashtag = "TFG",
             Message = $"""
-                Not yet.<p class="emoji delayed-visibility">{randomNotIndictedEmoji}</p>But on October 13, 2022 the January 6th committee <a target="twitter" href="https://twitter.com/i/events/1580554323045457920">voted 9-0 to subpoena him</a> for testimony under oath.<p class="emoji delayed-visibility">🤞</p>
+                Not yet.<p class="emoji delayed-visibility">{randomNotIndictedEmoji}</p>But on October 21, 2022 the January 6th committee <a target="story" href="https://apnews.com/article/donald-trump-subpoena-jan-6-committee-2d63a2ba74c1874ef6ef0d8ae6d788c1">issued a subpoena</a> for evidence and his testimony under oath.<p class="emoji delayed-visibility">🤞</p>
                 """
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
             Message = $"""
-                Yes! He was <a target="story" href="https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall">indicted in New York</a> on September 8, 2022 for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.
+                Yes! On October 21, 2022 (the same day <a href="/tfg">the former guy was subpoenaed</a>), Bannon was <a target="story" href="https://apnews.com/article/capitol-siege-steve-bannon-congress-donald-trump-sentencing-36d412eba9e1609a030859852378ae3d">sentenced to 4 months behind bars</a> for defying a subpoena. Plus, he was <a target="story" href="https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall">indicted in New York</a> on September 8, 2022 for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.
                 <div id="embedded-tweet" class="delayed-visibility">
                     <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Perp walk for Steve Bannon. The far-right former Trump aide, who is charged with money-laundering, conspiracy and fraud, seems as delusional as ever. <a href="https://t.co/UDwIgIel7C">pic.twitter.com/UDwIgIel7C</a></p>&mdash; Ian Fraser (@Ian_Fraser) <a href="https://twitter.com/Ian_Fraser/status/1568297092124413953?ref_src=twsrc%5Etfw">September 9, 2022</a></blockquote>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
-                <p>Unfortunately, he was released without bail.</p><p class="emoji delayed-visibility">{randomNotIndictedEmoji}</p>
                 """
         } },
         { "michael-flynn", new Criminal("Michael Flynn") },
