@@ -86,10 +86,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     var criminals = new Dictionary<string, Criminal> {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
-            Hashtag = "TFG",
-            Message = $"""
-                Not yet.<p class="emoji delayed-visibility">{randomNotIndictedEmoji}</p>But on October 21, 2022 the January 6th committee <a target="story" href="https://apnews.com/article/donald-trump-subpoena-jan-6-committee-2d63a2ba74c1874ef6ef0d8ae6d788c1">issued a subpoena</a> for evidence and his testimony under oath.<p class="emoji delayed-visibility">🤞</p>
-                """
+            Hashtag = "TFG"
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
@@ -113,10 +110,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "ginni-thomas", new Criminal("Ginni Thomas") },
         { "clarence-thomas", new Criminal("Clarence Thomas") },
         { "stephen-miller", new Criminal {
-            Name = "Stephen Miller",
-            Message = $"""
-                Not yet, but he was <a target="story" href="https://www.dailymail.co.uk/news/article-11198927/Stephen-Miller-dozen-Trump-associates-hit-subpoenas.html">subpoenaed by the grand jury</a> on September 9, 2022!<p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
-               """
+            Name = "Stephen Miller"
         } },
         { "louie-gohmert", new Criminal("Louie Gohmert") },
         { "newt-gingrich", new Criminal("Newt Gingrich") },
@@ -130,10 +124,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "phil-bryant", new Criminal("Gov. Phil Bryant") { Hashtag = "Gov. Phil Bryant" } },
         { "brett-favre", new Criminal("Brett Favre") },
         { "mike-lindell", new Criminal("Mike Lindell, the pillow guy") {
-            Hashtag = "#MikeLindell",
-            Message = $"""
-                No, not yet. But, <a target="twitter" href="https://twitter.com/search?q=lindell%20phone&src=typed_query&f=live">his phone was seized by the FBI</a> at a Hardee's on September 13, 2022.<p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
-                """
+            Hashtag = "#MikeLindell"
         } },
         { "greg-abbott", new Criminal("Gov. Greg Abbott") { Hashtag = "Gov. Greg Abbott" } },
         { "ron-desantis", new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis" } },
