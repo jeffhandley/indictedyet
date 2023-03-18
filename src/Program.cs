@@ -102,6 +102,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "matt-gaetz", new Criminal {
             Name = "Matt Gaetz",
             Hashtag = "#RapeyMcForehead",
+            Message = no
         } },
         { "bill-barr", new Criminal("Bill Barr") },
         { "ivanka", new Criminal("Ivanka") },
