@@ -86,7 +86,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     var criminals = new Dictionary<string, Criminal> {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
-            Hashtag = "TFG"
+            Hashtag = "TFG",
+            Message = "Apparently, the rumors of an indictment on March 21st were just yet another carrot on the end of a stick."
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
