@@ -88,7 +88,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Name = "The Former Guy",
             Hashtag = "TFG",
             Message = $"""
-                No<p class="emoji delayed-visibility">{randomNotIndictedYetEmoji}</p>
+                No<p class="emoji delayed-visibility">{randomNotIndictedEmoji}</p>
                 <p class="delayed-visibility">
                     While it was looking like the Stormy Daniels hush money case might just result in an indictment the week
                     of March 20th, that hasn't happened yet. The Grand Jury did not meet on Tuesday, and their meeting was
