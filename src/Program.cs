@@ -87,7 +87,15 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
-            Message = "Sigh. While it was looking like the Stormy Daniels hush money case might just result in an indictment the week of March 20th, that hasn't happened yet. The Grand Jury did not meet on Tuesday, and their meeting was abruptly canceled on Wednesday too. Now there's a far-right claim of exculpatory evidence being \"hidden\" to keep this from wrapping up."
+            Message = $@"""
+                No<p class="emoji delayed-visibility">{randomNotIndictedYetEmoji}</p>
+                <p>
+                    While it was looking like the Stormy Daniels hush money case might just result in an indictment the week
+                    of March 20th, that hasn't happened yet. The Grand Jury did not meet on Tuesday, and their meeting was
+                    abruptly canceled on Wednesday after a far-right claim of exculpatory evidence being "hidden" from the
+                    <a target="story" href="https://twitter.com/search?q=%22Grand%20Jury%22">Grand Jury</a>.
+                </p>
+                """
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
