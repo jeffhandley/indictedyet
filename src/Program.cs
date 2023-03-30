@@ -89,9 +89,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Hashtag = "TFG",
             Message = $"""
                 MAYBE!?
-                <p>According to many news sources, he is finally being indicted.</p>
-                <p>The NYTimes front page is quite nice. Here's <a href="https://www.nytimes.com/live/2023/03/30/nyregion/trump-indictment-news" target="story">the article</a>.</p>
-                <p><img src="/its-happening.gif" /></p>
+                <p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
+                <p class="delayed-visibility">According to many news sources, he is finally being indicted.</p>
+                <p class="delayed-visibility">The NYTimes front page is quite nice. Here's <a href="https://www.nytimes.com/live/2023/03/30/nyregion/trump-indictment-news" target="story">the article</a>.</p>
+                <p class="delayed-visibility"><img src="/its-happening.gif" /></p>
                 """
         } },
         { "steve-bannon", new Criminal {
