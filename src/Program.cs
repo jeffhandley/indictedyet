@@ -87,7 +87,12 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
-            Message = "Apparently, the rumors of an indictment on March 21st were just yet another carrot on the end of a stick."
+            Message = $"""
+                MAYBE!?
+                <p>According to many news sources, he is finally being indicted.</p>
+                <p>The NYTimes front page is quite nice. Here's <a href="https://www.nytimes.com/live/2023/03/30/nyregion/trump-indictment-news" target="story">the article</a>.</p>
+                <p><img src="/its-happening.gif" /></p>
+                """
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
