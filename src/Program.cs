@@ -100,7 +100,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                     since being in office, but rather his payments made during the 2016 presidential campaign that related to his affair
                     with Stormy Daniels. But hey, let's take the win!</p>
                 <p>The coverage of this historic event is endless, but the <a target="story" href="https://www.pbs.org/newshour/politics/donald-trump-indicted-lawyer-says">PBS article</a> is a good read.</p>
-                <p><img src="/its-happening.gif" /></p>
+                <p><img src="/its-happening.gif" style="width:80%" /></p>
                 """
         } },
         { "steve-bannon", new Criminal {
