@@ -10,7 +10,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapGet("{name=the-former-guy}", (HttpContext context) => {
-    var name = ((string)context.GetRouteValue("name")).ToLower();
+    var name = ((string)context.GetRouteValue("name")!).ToLower();
 
     var redirects = new Dictionary<string, string> {
         { "theformerguy", "the-former-guy" },
@@ -63,6 +63,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "rapey-mcforehead", "matt-gaetz" },
         { "gym-jordan", "jim-jordan" },
         { "pillow-guy", "mike-lindell" },
+        { "the-pillow-guy", "mike-lindell" },
         { "marjorie-nazi-greene", "mtg" },
     };
 
@@ -83,25 +84,30 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         No, and they won't be.<p class="emoji delayed-visibility">{randomNotIndictedEmoji}</p>
         """;
 
+    string yes = $"""
+        YES!
+        <p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
+        """;
+
     var criminals = new Dictionary<string, Criminal> {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
-            Message = $"""
-                <h2>YES!</h2>
-                <p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
-                <p class="delayed-visibility">On Thursday, March 30, 2023, the Manhattan grand jury voted to indict him.</p>
-                <p class="delayed-visibility">This indictment relates not to inciting a riot on January 6th or any of his other atrocities
+            Heading = yes,
+            Body = $"""
+                <p>On Thursday, March 30, 2023, the Manhattan grand jury voted to indict him.</p>
+                <p>This indictment relates not to inciting a riot on January 6th or any of his other atrocities
                     since being in office, but rather his payments made during the 2016 presidential campaign that related to his affair
                     with Stormy Daniels. But hey, let's take the win!</p>
-                <p class="delayed-visibility">The coverage of this historic event is endless, but the <a target="story" href="https://www.pbs.org/newshour/politics/donald-trump-indicted-lawyer-says">PBS article</a> is a good read.</p>
-                <p class="delayed-visibility"><img src="/its-happening.gif" /></p>
+                <p>The coverage of this historic event is endless, but the <a target="story" href="https://www.pbs.org/newshour/politics/donald-trump-indicted-lawyer-says">PBS article</a> is a good read.</p>
+                <p><img src="/its-happening.gif" /></p>
                 """
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
-            Message = $"""
-                Yes! On October 21, 2022 (the same day <a href="/tfg">the former guy was subpoenaed</a>), Bannon was <a target="story" href="https://apnews.com/article/capitol-siege-steve-bannon-congress-donald-trump-sentencing-36d412eba9e1609a030859852378ae3d">sentenced to 4 months behind bars</a> for defying a subpoena. Plus, he was <a target="story" href="https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall">indicted in New York</a> on September 8, 2022 for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.
+            Heading = yes,
+            Body = $"""
+                <p>On October 21, 2022 (the same day <a href="/tfg">the former guy was subpoenaed</a>), Bannon was <a target="story" href="https://apnews.com/article/capitol-siege-steve-bannon-congress-donald-trump-sentencing-36d412eba9e1609a030859852378ae3d">sentenced to 4 months behind bars</a> for defying a subpoena. Plus, he was <a target="story" href="https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall">indicted in New York</a> on September 8, 2022 for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.</p>
                 <div id="embedded-tweet" class="delayed-visibility">
                     <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Perp walk for Steve Bannon. The far-right former Trump aide, who is charged with money-laundering, conspiracy and fraud, seems as delusional as ever. <a href="https://t.co/UDwIgIel7C">pic.twitter.com/UDwIgIel7C</a></p>&mdash; Ian Fraser (@Ian_Fraser) <a href="https://twitter.com/Ian_Fraser/status/1568297092124413953?ref_src=twsrc%5Etfw">September 9, 2022</a></blockquote>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -112,7 +118,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "matt-gaetz", new Criminal {
             Name = "Matt Gaetz",
             Hashtag = "#RapeyMcForehead",
-            Message = no
+            Heading = no
         } },
         { "bill-barr", new Criminal("Bill Barr") },
         { "ivanka", new Criminal("Ivanka") },
@@ -142,21 +148,22 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "mtg", new Criminal("Rep. Marjorie Taylor Greene") { Hashtag = "MTG" } },
         { "jeffrey-clark", new Criminal("Jeffrey Clark") },
     };
-    
+
     var defaultCriminal = new Criminal {
         Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.Replace("-", " ")),
-        Message = """
-            Not that we know of. <a target="github" href="https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs">Submit a contribution</a> if you have an update!
-            """
+        Heading = "Not that we know of."
     };
-           
+
     if (!criminals.TryGetValue(name, out var criminal)) {
         criminal = defaultCriminal;
     }
-    
+
     criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "").Replace(".", "");
     criminal.Url ??= $"https://twitter.com/search?q={criminal.Hashtag.Replace("#", "%23")}&f=live";
-    criminal.Message ??= notYet;
+    criminal.Heading ??= notYet;
+    criminal.Body ??= $"""
+            <p><a target="github" href="https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs">Submit a contribution</a> if you have an update!</p>
+            """;
 
     var linkedName = $"""
         <a target="twitter" href="{criminal.Url}">{criminal.Name}</a>
@@ -212,6 +219,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                         transition: opacity 0.3s;
                         transition-delay: 1.0s;
                     }
+                    #body-content p {
+                        font-size: 130%;
+                        font-weight: bold;
+                    }
                     #share {
                         min-height: 40px;
                         padding-top: 10px;
@@ -263,7 +274,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             <body>
                 <div id="body-content">
                     <h1 class="delayed-visibility">Is {{linkedName}} Indicted Yet?</h1>
-                    <h2 class="delayed-visibility">{{criminal.Message}}</h2>
+                    <h2 class="delayed-visibility">{{criminal.Heading}}</h2>
+                    <div class="delayed-visibility">
+                        {{criminal.Body}}
+                    </div>
                     <div id="share" class="delayed-visibility">
                         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Is {{criminal.Hashtag}} @IndictedYet?" data-related="IndictedYet" data-show-count="true">Tweet</a>
                         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -289,15 +303,16 @@ app.Run();
 struct Criminal
 {
     public string Name;
-    public string Hashtag;
-    public string Url;
-    public string Message;
-    
-    public Criminal() : this(null) { }
+    public string? Hashtag;
+    public string? Url;
+    public string? Heading;
+    public string? Body;
+
     public Criminal(string name) {
         Name = name;
         Hashtag = null;
         Url = null;
-        Message = null;
+        Heading = null;
+        Body = null;
     }
 }
