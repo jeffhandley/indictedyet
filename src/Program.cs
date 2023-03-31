@@ -88,10 +88,13 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Name = "The Former Guy",
             Hashtag = "TFG",
             Message = $"""
-                MAYBE!?
+                <h2>YES!</h2>
                 <p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
-                <p class="delayed-visibility">According to many news sources, he is finally being indicted.</p>
-                <p class="delayed-visibility">The NYTimes front page is quite nice. Here's <a href="https://www.nytimes.com/live/2023/03/30/nyregion/trump-indictment-news" target="story">the article</a>.</p>
+                <p class="delayed-visibility">On Thursday, March 30, 2023, the Manhattan grand jury voted to indict him.</p>
+                <p class="delayed-visibility">This indictment relates not to inciting a riot on January 6th or any of his other atrocities
+                    since being in office, but rather his payments made during the 2016 presidential campaign that related to his affair
+                    with Stormy Daniels. But hey, let's take the win!</p>
+                <p class="delayed-visibility">The coverage of this historic event is endless, but the <a target="story" href="https://www.pbs.org/newshour/politics/donald-trump-indicted-lawyer-says">PBS article</a> is a good read.</p>
                 <p class="delayed-visibility"><img src="/its-happening.gif" /></p>
                 """
         } },
