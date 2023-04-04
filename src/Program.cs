@@ -96,11 +96,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Heading = yes,
             Body = $"""
                 <p>On Thursday, March 30, 2023, the Manhattan grand jury voted to indict him.</p>
-                <p>This indictment relates not to inciting a riot on January 6th or any of his other atrocities
-                    since being in office, but rather his payments made during the 2016 presidential campaign that related to his affair
-                    with Stormy Daniels. But hey, let's take the win!</p>
-                <p>The coverage of this historic event is endless, but the <a target="story" href="https://www.pbs.org/newshour/politics/donald-trump-indicted-lawyer-says">PBS article</a> is a good read.</p>
-                <p><img src="/its-happening.gif" style="width:80%" /></p>
+                <p>On Tuesday, April 4, 2023, he was arraigned and charged with 34 felony counts of fraud and falsifying records to influence the 2016 election. He pleaded not guilty to all counts.</p>
+                <p>This indictment and charges relate to payments made during the 2016 presidential campaign that related to his affair with Stormy Daniels.</p>
+                <p>The <a target="story" href="https://www.pbs.org/newshour/politics/donald-trump-indicted-lawyer-says">PBS article</a> is a good read for understanding the indictment context.</p>
                 """
         } },
         { "steve-bannon", new Criminal {
