@@ -112,6 +112,17 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 </div>
                 """
         } },
+        { "george-santos", new Criminal {
+            Name = "Rep. George Santos",
+            Heading = yes,
+            Body = $"""
+                <p>On May 10, 2023, <a target="story" href="https://apnews.com/hub/george-santos">George Santos</a>
+                    <a target="story" href="https://apnews.com/article/george-santos-justice-department-new-york-7e16d39eea0fc577f78d17502a384084">was indicted</a>
+                    and faced <a target="story" href="https://apnews.com/article/george-santos-charges-explanation-b3469ff891e0fa53ea78fa15910ebc62">13 counts related to fraud, embezzlement, and false statements</a>.
+                    He <a target="story" href="https://apnews.com/article/george-santos-federal-charges-updates-33667a0900271e5002459ab748d8fdc8?utm_source=homepage&utm_medium=TopNews&utm_campaign=position_01">pleaded not guilty</a>, of course.
+                </p>
+                """
+        } },
         { "michael-flynn", new Criminal("Michael Flynn") },
         { "matt-gaetz", new Criminal {
             Name = "Matt Gaetz",
