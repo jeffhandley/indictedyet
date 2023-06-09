@@ -96,7 +96,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Heading = yes,
             Body = $"""
                 <p>On Thursday, June 8, 2023, the Justice Department <a target="story" href="https://www.reuters.com/world/us/trump-biden-administration-has-informed-my-lawyers-that-ive-been-indicted-2023-06-08/">indicted him on 7 counts</a> related to confidential documents mishandling after leaving office.</p>
-                {{notIndictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}}
+                {notIndictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}
                 <p>On Tuesday, April 4, 2023, he was <a target="story" href="https://www.pbs.org/newshour/politics/donald-trump-indicted-lawyer-says">arraigned and charged with 34 felony counts of fraud</a> and falsifying records to influence the 2016 election. He pleaded not guilty to all counts.</p>
                 """
         } },
