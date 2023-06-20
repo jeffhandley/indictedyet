@@ -156,6 +156,15 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "ron-desantis", new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis" } },
         { "mtg", new Criminal("Rep. Marjorie Taylor Greene") { Hashtag = "MTG" } },
         { "jeffrey-clark", new Criminal("Jeffrey Clark") },
+        { "hunter-biden", new Criminal {
+            Name = "Hunter Biden",
+            Heading = yes,
+            Body = $"""
+                <p>Well, how about that? On June 20, 2023, <a target="story" href="https://www.npr.org/2023/06/20/1087173827/hunter-biden">
+                he agreed to plead guilty</a> for charges related to his federal income taxes, along with a firearm offense charge. He did
+                not pay federal income taxes in 2017 or 2018, despite owing more than $100,000 each of those years.</p>
+                """
+        } },
     };
 
     var defaultCriminal = new Criminal {
