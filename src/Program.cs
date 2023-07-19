@@ -93,11 +93,12 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
             Hashtag = "TFG",
-            Heading = yes,
+            Heading = $"""
+                <p class="emoji delayed-visibility">🔜🔜🔜</p>
+                <p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
+                """,
             Body = $"""
-                <p>🔜🔜🔜</p>
                 <p>On Sunday, July 16th, he received a letter from special counsel Jack Smith that he is the TARGET of federal charges related to the January 6th coup attempt.</p>
-                <p>🔜🔜🔜</p>
                 <p>On Thursday, June 8, 2023, the Justice Department <a target="story" href="https://www.reuters.com/world/us/trump-biden-administration-has-informed-my-lawyers-that-ive-been-indicted-2023-06-08/">indicted him on 7 counts</a> related to confidential documents mishandling after leaving office.</p>
                 <p>He was arraigned and presented with his charges on July 13, 2023. Instead of just 7 counts, he was <a target="story" href="https://www.pbs.org/newshour/politics/live-updates-trumps-federal-arraignment-in-miami">presented with 37 felony counts</a> related to hoarding top secret government documents, boastfully displaying them to visitors and trying to hide them from investigators who demanded them back.</p>
                 {indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}
