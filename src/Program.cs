@@ -107,6 +107,16 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 <p>On Tuesday, April 4, 2023, he was <a target="story" href="https://www.pbs.org/newshour/politics/donald-trump-indicted-lawyer-says">arraigned and charged with 34 felony counts of fraud</a> and falsifying records to influence the 2016 election. He pleaded not guilty to all counts.</p>
                 """
         } },
+        { "michigan-16", new Criminal {
+            Name = "Michigan's 16 False Electors",
+            Heading = yes,
+            Body = $"""
+                <p>On July 18, Michigan Attorney General Dana Nessel 
+                <a target="story" href="https://www.npr.org/2023/07/18/1188437637/michigans-fake-elector-charges">announced felony charges</a>
+                against 16 Michigan residents for their role in the alleged false electors scheme
+                following the 2020 U.S. presidential election.
+                """
+        } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
             Heading = yes,
