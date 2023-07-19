@@ -109,6 +109,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         } },
         { "michigan-16", new Criminal {
             Name = "Michigan's Group of 16 False Electors",
+            Hashtag = "Michigan False Electors",
             Heading = yes,
             Body = $"""
                 <p>On July 18, Michigan Attorney General Dana Nessel 
