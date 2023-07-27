@@ -142,10 +142,6 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Heading = yes,
             Body = $"""
                 <p>On October 21, 2022 (the same day <a href="/tfg">the former guy was subpoenaed</a>), Bannon was <a target="story" href="https://apnews.com/article/capitol-siege-steve-bannon-congress-donald-trump-sentencing-36d412eba9e1609a030859852378ae3d">sentenced to 4 months behind bars</a> for defying a subpoena. Plus, he was <a target="story" href="https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall">indicted in New York</a> on September 8, 2022 for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.</p>
-                <div id="embedded-tweet" class="delayed-visibility">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Perp walk for Steve Bannon. The far-right former Trump aide, who is charged with money-laundering, conspiracy and fraud, seems as delusional as ever. <a href="https://t.co/UDwIgIel7C">pic.twitter.com/UDwIgIel7C</a></p>&mdash; Ian Fraser (@Ian_Fraser) <a href="https://twitter.com/Ian_Fraser/status/1568297092124413953?ref_src=twsrc%5Etfw">September 9, 2022</a></blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
                 """
         } },
         { "george-santos", new Criminal {
@@ -213,15 +209,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     }
 
     criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "").Replace(".", "");
-    criminal.Url ??= $"https://twitter.com/search?q={criminal.Hashtag.Replace("#", "%23")}&f=live";
     criminal.Heading ??= notYet;
     criminal.Body ??= $"""
             <p><a target="github" href="https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs">Submit a contribution</a> if you have an update!</p>
             """;
-
-    var linkedName = $"""
-        <a target="twitter" href="{criminal.Url}">{criminal.Name}</a>
-        """;
 
     var suggestions = criminals.Where(c => c.Key != criminalName).Select(c => c.Key);
     var suggestedAlias = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
@@ -283,13 +274,6 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                         transition: opacity 0.3s;
                         transition-delay: 1.8s;
                     }
-                    #embedded-tweet {
-                        min-height: 600px;
-                        padding-top: 25px;
-                        text-align: -webkit-center;
-                        transition: opacity 0.3s;
-                        transition-delay: 3.0s;
-                    }
                     #suggestion {
                         font-size: xx-large;
                         font-weight: bold;
@@ -327,21 +311,17 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             </script>
             <body>
                 <div id="body-content">
-                    <h1 class="delayed-visibility">Is {{linkedName}} Indicted Yet?</h1>
+                    <h1 class="delayed-visibility">Is {{criminal.Name}} Indicted Yet?</h1>
                     <h2 class="delayed-visibility">{{criminal.Heading}}</h2>
                     <div class="delayed-visibility">
                         {{criminal.Body}}
-                    </div>
-                    <div id="share" class="delayed-visibility">
-                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Is {{criminal.Hashtag}} @IndictedYet?" data-related="IndictedYet" data-show-count="true">Tweet</a>
-                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                     <p id="suggestion" class="delayed-visibility">
                         What about <a href="{{suggestedAlias}}">{{suggestedCriminalName}}</a>?
                     </p>
                 </div>
                 <div id="foot-content">
-                    <a target="github" href="https://github.com/jeffhandley/indictedyet">Website</a> by <a target="twitter" href="https://twitter.com/JeffHandley">@JeffHandley</a>.
+                    <a target="github" href="https://github.com/jeffhandley/indictedyet">Website by Jeff Handley</a>.
                     Photo by <a target="unsplash" href="https://unsplash.com/@emilianobar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Emiliano Bar</a> on <a target="unsplash" href="https://unsplash.com/s/photos/prison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>.
                 </div>
             </body>
