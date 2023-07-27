@@ -313,9 +313,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 <div id="body-content">
                     <h1 class="delayed-visibility">Is {{criminal.Name}} Indicted Yet?</h1>
                     <h2 class="delayed-visibility">{{criminal.Heading}}</h2>
+                    <hr />
                     <div class="delayed-visibility">
                         {{criminal.Body}}
                     </div>
+                    <hr />
                     <p id="suggestion" class="delayed-visibility">
                         What about <a href="{{suggestedAlias}}">{{suggestedCriminalName}}</a>?
                     </p>
