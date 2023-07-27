@@ -94,11 +94,13 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Name = "The Former Guy",
             Hashtag = "TFG",
             Heading = $"""
-                <p class="emoji delayed-visibility">🔜&nbsp;🔜&nbsp;🔜</p>
+                YES! There are three sets of indictments so far. We're still awaiting indictments related to the January 6th coup attempt and other crimes related to the attempt to interfere with and overturn the election.
                 """,
             Body = $"""
+                <p>Whoa; we got a consolation indictment! On Thursday, July 27, he was charged with <a target="story" href="https://www.washingtonpost.com/national-security/2023/07/27/trump-carlos-deoliveira-classified-indictment/">seeking to delete security footage</a> in the documents case. This is a fresh indictment on top of the existing classified documents handling charges.</p>
+                {indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}
                 <p>On Thursday, July 27, his lawyers <a target="story" href="https://apnews.com/article/trump-justice-department-investigation-indictment-730455c2b7a684593e41362e4b661cb3">met with Jack Smith's team</a> on July 27 to discuss the pending indictment, but <a target="story" href="https://www.independent.co.uk/news/world/americas/us-politics/trump-indictment-today-special-counsel-watch-b2383238.html">no charges will be filed today</a>.</p>
-                {notIndictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}
+                <p class="emoji delayed-visibility">🔜&nbsp;🔜&nbsp;🔜</p>
                 <p>On Sunday, July 16th, he received a letter from special counsel Jack Smith that he is the TARGET of federal charges related to the January 6th coup attempt.</p>
                 <p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
                 <p>YES!</p>
