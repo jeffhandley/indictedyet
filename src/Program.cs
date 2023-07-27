@@ -97,7 +97,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 <p class="emoji delayed-visibility">🔜&nbsp;🔜&nbsp;🔜</p>
                 """,
             Body = $"""
-                <p>On Sunday, July 16th, he received a letter from special counsel Jack Smith that he is the TARGET of federal charges related to the January 6th coup attempt.</p>
+                <p>On Sunday, July 16th, he received a letter from special counsel Jack Smith that he is the TARGET of federal charges related to the January 6th coup attempt. His lawyers <a target="story" href="https://apnews.com/article/trump-justice-department-investigation-indictment-730455c2b7a684593e41362e4b661cb3">met with Jack Smith's team</a> on July 27 to discuss the pending indictment.</p>
                 <p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
                 <p>YES!</p>
                 <p>On Thursday, June 8, 2023, the Justice Department <a target="story" href="https://www.reuters.com/world/us/trump-biden-administration-has-informed-my-lawyers-that-ive-been-indicted-2023-06-08/">indicted him on 7 counts</a> related to confidential documents mishandling after leaving office.</p>
