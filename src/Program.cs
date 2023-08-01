@@ -99,17 +99,18 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Body = $"""
                 <div>
                     <p>YES!</p>
-                    <p>Whoa; we got a consolation indictment! On Thursday, July 27, he was charged with <a target="story" href="https://www.washingtonpost.com/national-security/2023/07/27/trump-carlos-deoliveira-classified-indictment/">seeking to delete security footage</a> in the documents case. This is a fresh indictment on top of the existing classified documents handling charges.</p>
+                    <p>
+                        Tuesday, August 1st, the Justice Department <a target="story" href="https://apnews.com/article/trump-indicted-jan-6-investigation-special-counsel-debb59bb7a4d9f93f7e2dace01feccdc">indicted him on four felony counts related to his attempts to overturn the 2020 election</a>. He is finally being held responsible and accountable for the January 6th attack on the Capitol and other efforts to prevent the transfer of power. This is the day we've all been waiting for since even before the January 6th riots.
+                        Earlier in this process, his lawyers <a target="story" href="https://apnews.com/article/trump-justice-department-investigation-indictment-730455c2b7a684593e41362e4b661cb3">met with Jack Smith's team</a> on July 27 to discuss the pending indictment, but <a target="story" href="https://www.independent.co.uk/news/world/americas/us-politics/trump-indictment-today-special-counsel-watch-b2383238.html">no charges will be filed today</a>.
+                        On Sunday, July 16th, he received a letter from special counsel Jack Smith that <a target="story" href="https://www.theguardian.com/us-news/2023/jul/19/trump-investigation-three-federal-crimes-january-6">he is the TARGET of federal charges</a> related to the January 6th coup attempt.
+                    </p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
                 </div>
                 <hr />
                 <div>
-                    <p>Not yet...</p>
-                    <p>
-                        On Thursday, July 27, his lawyers <a target="story" href="https://apnews.com/article/trump-justice-department-investigation-indictment-730455c2b7a684593e41362e4b661cb3">met with Jack Smith's team</a> on July 27 to discuss the pending indictment, but <a target="story" href="https://www.independent.co.uk/news/world/americas/us-politics/trump-indictment-today-special-counsel-watch-b2383238.html">no charges will be filed today</a>.
-                        This follows the news that on Sunday, July 16th, he received a letter from special counsel Jack Smith that he is the TARGET of federal charges related to the January 6th coup attempt.
-                    </p>
-                    <p class="emoji delayed-visibility">🔜&nbsp;🔜&nbsp;🔜</p>
+                    <p>YES!</p>
+                    <p>Whoa; we got a consolation indictment! On Thursday, July 27, he was charged with <a target="story" href="https://www.washingtonpost.com/national-security/2023/07/27/trump-carlos-deoliveira-classified-indictment/">seeking to delete security footage</a> in the documents case. This is a fresh indictment on top of the existing classified documents handling charges.</p>
+                    <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
                 </div>
                 <hr />
                 <div>
