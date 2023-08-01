@@ -101,7 +101,11 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                     <p>YES!</p>
                     <p>
                         Tuesday, August 1st, the Justice Department <a target="story" href="https://www.pbs.org/newshour/politics/watch-live-trump-indicted-on-federal-charges-in-jan-6-case-special-counsel-jack-smith-announces">indicted him on four felony counts related to his attempts to overturn the 2020 election</a>. He is finally being held responsible and accountable for the January 6th attack on the Capitol and other efforts to prevent the transfer of power. This is the day we've all been waiting for since even before the January 6th riots.
+                    </p>
+                    <p>
                         Earlier in this process, his lawyers <a target="story" href="https://apnews.com/article/trump-justice-department-investigation-indictment-730455c2b7a684593e41362e4b661cb3">met with Jack Smith's team</a> on July 27 to discuss the pending indictment, but <a target="story" href="https://www.independent.co.uk/news/world/americas/us-politics/trump-indictment-today-special-counsel-watch-b2383238.html">no charges will be filed today</a>.
+                    </p>
+                    <p>
                         On Sunday, July 16th, he received a letter from special counsel Jack Smith that <a target="story" href="https://www.theguardian.com/us-news/2023/jul/19/trump-investigation-three-federal-crimes-january-6">he is the TARGET of federal charges</a> related to the January 6th coup attempt.
                     </p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
