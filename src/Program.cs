@@ -111,7 +111,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 </div>
                 <hr />
                 <div>
-                    <p>Whoa; we got a consolation indictment! On Thursday, July 27, he was charged with <a target="story" href="https://www.washingtonpost.com/national-security/2023/07/27/trump-carlos-deoliveira-classified-indictment/">seeking to delete security footage</a> in the documents case. This is a fresh indictment on top of the existing classified documents handling charges.</p>
+                    <p>Whoa; we got a bonus indictment! On Thursday, July 27, he was charged with <a target="story" href="https://www.washingtonpost.com/national-security/2023/07/27/trump-carlos-deoliveira-classified-indictment/">seeking to delete security footage</a> in the documents case. This is a fresh indictment on top of the existing classified documents handling charges.</p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
                 </div>
                 <hr />
