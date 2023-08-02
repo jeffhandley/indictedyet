@@ -142,14 +142,14 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Name = "Matthew DePerno",
             Heading = yes,
             Body = $"""
-                <p>On August 1, former attorney general candidate Matthew DePerno (R) <a target="story" href="https://www.washingtonpost.com/national-security/2023/08/01/michigan-indictment-2020-election-voting-machine-tampering/">was charged</a> with improper possession of a voting machine, conspiracy to unlawfully possess a voting machine, conspiracy to gain unauthorized access to a computer system and willfully damaging a voting machine.</p>
+                <p>On August 1, former Michigan attorney general candidate Matthew DePerno (R) <a target="story" href="https://www.washingtonpost.com/national-security/2023/08/01/michigan-indictment-2020-election-voting-machine-tampering/">was charged</a> with improper possession of a voting machine, conspiracy to unlawfully possess a voting machine, conspiracy to gain unauthorized access to a computer system and willfully damaging a voting machine.</p>
                 """
         } },
         { "daire-rendon", new Criminal {
             Name = "Daire Rendon",
             Heading = yes,
             Body = $"""
-                <p>On August 1, former state representative Daire Rendon (R) <a target="story" href="https://www.washingtonpost.com/national-security/2023/08/01/michigan-indictment-2020-election-voting-machine-tampering/">was charged</a> with conspiracy to unlawfully possess a voting machine and using false pretenses with the intent to defraud.</p>
+                <p>On August 1, former Michigan state representative Daire Rendon (R) <a target="story" href="https://www.washingtonpost.com/national-security/2023/08/01/michigan-indictment-2020-election-voting-machine-tampering/">was charged</a> with conspiracy to unlawfully possess a voting machine and using false pretenses with the intent to defraud.</p>
                 """
         } },
         { "steve-bannon", new Criminal {
