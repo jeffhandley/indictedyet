@@ -361,6 +361,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                         text-align: center;
                         font-weight: bold;
                     }
+                    ol {
+                        display: inline-block;
+                        text-align: left;
+                    }
                     a, a:visited, a:active {
                         color: rgb(25, 25, 175);
                     }
