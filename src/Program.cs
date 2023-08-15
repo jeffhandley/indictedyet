@@ -98,26 +98,22 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 """,
             Body = $"""
                 <div>
-                    <p>
-                        Tuesday, August 1st, the Justice Department <a target="story" href="https://www.pbs.org/newshour/politics/watch-live-trump-indicted-on-federal-charges-in-jan-6-case-special-counsel-jack-smith-announces">indicted him on four felony counts related to his attempts to overturn the 2020 election</a>. He is finally being held responsible and accountable for the January 6th attack on the Capitol and other efforts to prevent the transfer of power. This is the day we've all been waiting for since even before the January 6th riots.
-                    </p>
-                    <p>
-                        Earlier in this process, his lawyers <a target="story" href="https://apnews.com/article/trump-justice-department-investigation-indictment-730455c2b7a684593e41362e4b661cb3">met with Jack Smith's team</a> on July 27 to discuss the pending indictment, but <a target="story" href="https://www.independent.co.uk/news/world/americas/us-politics/trump-indictment-today-special-counsel-watch-b2383238.html">no charges will be filed today</a>.
-                    </p>
-                    <p>
-                        On Sunday, July 16th, he received a letter from special counsel Jack Smith that <a target="story" href="https://www.theguardian.com/us-news/2023/jul/19/trump-investigation-three-federal-crimes-january-6">he is the TARGET of federal charges</a> related to the January 6th coup attempt.
-                    </p>
+                    <p>Monday, August 14th, a Georgia state grand jury <a target="story" href="https://www.pbs.org/newshour/politics/prosecutors-start-presenting-2020-georgia-election-investigation-to-grand-jury">recommended indictments</a> for attempting to overturn Georgia's 2020 election results. These state level charges are noteworthy for several reasons, including his blatant attempt to have votes "found" in his "perfect" phone call, and the fact that state-level charges cannot be pardoned by the US president.</p>
+                    <p>We are still waiting for the indictments to be unsealed so that we know what the charges will be.</p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
                 </div>
                 <hr />
                 <div>
-                    <p>Whoa; we got a bonus indictment! On Thursday, July 27, he was charged with <a target="story" href="https://www.washingtonpost.com/national-security/2023/07/27/trump-carlos-deoliveira-classified-indictment/">seeking to delete security footage</a> in the documents case. This is a fresh indictment on top of the existing classified documents handling charges.</p>
+                    <p>Tuesday, August 1st, the Justice Department <a target="story" href="https://www.pbs.org/newshour/politics/watch-live-trump-indicted-on-federal-charges-in-jan-6-case-special-counsel-jack-smith-announces">indicted him on four felony counts related to his attempts to overturn the 2020 election</a>. He is finally being held responsible and accountable for the January 6th attack on the Capitol and other efforts to prevent the transfer of power. This is the day we've all been waiting for since even before the January 6th riots.</p>
+                    <p>Earlier in this process, his lawyers <a target="story" href="https://apnews.com/article/trump-justice-department-investigation-indictment-730455c2b7a684593e41362e4b661cb3">met with Jack Smith's team</a> on July 27 to discuss the pending indictment, but <a target="story" href="https://www.independent.co.uk/news/world/americas/us-politics/trump-indictment-today-special-counsel-watch-b2383238.html">no charges will be filed today</a>.</p>
+                    <p>On Sunday, July 16th, he received a letter from special counsel Jack Smith that <a target="story" href="https://www.theguardian.com/us-news/2023/jul/19/trump-investigation-three-federal-crimes-january-6">he is the TARGET of federal charges</a> related to the January 6th coup attempt.</p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
                 </div>
                 <hr />
                 <div>
                     <p>On Thursday, June 8, 2023, the Justice Department <a target="story" href="https://www.reuters.com/world/us/trump-biden-administration-has-informed-my-lawyers-that-ive-been-indicted-2023-06-08/">indicted him on 7 counts</a> related to confidential documents mishandling after leaving office.</p>
                     <p>He was arraigned and presented with his charges on July 13, 2023. Instead of just 7 counts, he was <a target="story" href="https://www.pbs.org/newshour/politics/live-updates-trumps-federal-arraignment-in-miami">presented with 37 felony counts</a> related to hoarding top secret government documents, boastfully displaying them to visitors and trying to hide them from investigators who demanded them back.</p>
+                    <p>On Thursday, July 27, we got bonus charges! He was charged with <a target="story" href="https://www.washingtonpost.com/national-security/2023/07/27/trump-carlos-deoliveira-classified-indictment/">seeking to delete security footage</a> in the documents case. This is a fresh indictment on top of the existing classified documents handling charges.</p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
                 </div>
                 <hr />
