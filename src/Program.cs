@@ -57,6 +57,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "sydney-powell", "sidney-powell" },
         { "sydney", "sidney-powell" },
         { "powell", "sidney-powell" },
+        { "eastman", "john-eastman" },
+        { "ken-chesebro", "kenneth-chesebro" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -101,8 +103,30 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         Body = $"""
                 <div>
                     <p>Monday, August 14th, a Fulton county grand jury in Georgia <a target="story" href="https://www.pbs.org/newshour/politics/prosecutors-start-presenting-2020-georgia-election-investigation-to-grand-jury">recommended indictments</a> for attempting to overturn Georgia's 2020 election results.</p>
-                    <p>These are state charges and there were 19 people included in the indictments, including <a href="/tfg">the former guy</a>, <a href="/rudy">Rudy Giuliani</a>, <a href="/mark-meadows">Mark Meadows</a>, <a href="/jeffrey-clark">Jeffrey Clark</a>, <a href="sidney-powell">Sidney Powell</a>, <a href="/ken-chesebro">Ken Chesebro</a>, and quite a few others.</p>
+                    <p>These are state charges and there were 19 people included in the indictments, including <a href="/tfg">the former guy</a>, <a href="/rudy">Rudy Giuliani</a>, <a href="/mark-meadows">Mark Meadows</a>, <a href="/jeffrey-clark">Jeffrey Clark</a>, <a href="sidney-powell">Sidney Powell</a>, <a href="/kenneth-chesebro">Kenneth Chesebro</a>, <a href="/john-eastman">John Eastman</a>, and quite a few others.</p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
+                    <p>The <a target="story" href="https://abcnews.go.com/US/wireStory/19-people-charged-georgia-indictment-connected-trump-election-102274367">19 people included</a> in the indictments, are:</p>
+                    <ol>
+                        <li><a href="/tfg">The former guy</a></li>
+                        <li><a href="/rudy">Rudy Giuliani</a></li>
+                        <li><a href="/mark-meadows">Mark Meadows</a></li>
+                        <li><a href="/jeffrey-clark">Jeffrey Clark</a></li>
+                        <li><a href="/sidney-powell">Sidney Powell</a></li>
+                        <li><a href="/kenneth-chesebro">Kenneth Chesebro</a></li>
+                        <li><a href="/john-eastman">John Eastman</a></li>
+                        <li><a href="/jenna-ellis">Jenna Ellis</a></li>
+                        <li><a href="/ray-smith">Ray Smith</a></li>
+                        <li><a href="/robert-cheeley">Robert Cheeley</a></li>
+                        <li><a href="/michael-roman">Michael Roman</a></li>
+                        <li><a href="/david-shafer">David Shafer</a></li>
+                        <li><a href="/shawn-still">Shawn Still</a></li>
+                        <li><a href="/stephen-cliffgard-lee">Stephen Cliffgard Lee</a></li>
+                        <li><a href="/harrison-william-prescott-floyd">Harrison William Prescott Floyd</a></li>
+                        <li><a href="/trevian-kutti">Trevian C. Kutti</a></li>
+                        <li><a href="/cathy-latham">Cathy Latham</a></li>
+                        <li><a href="/scott-graham-hall">Scott Graham Hall</a></li>
+                        <li><a href="/misty-hampton">Misty Hampton</a></li>
+                    </ol>
                 </div>
             """
     };
@@ -117,7 +141,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             Body = $"""
                 <div>
                     <p>Monday, August 14th, a Fulton county grand jury in Georgia <a target="story" href="https://www.pbs.org/newshour/politics/prosecutors-start-presenting-2020-georgia-election-investigation-to-grand-jury">recommended indictments</a> for attempting to overturn Georgia's 2020 election results. These charges are noteworthy for several reasons, including his blatant attempt in his "perfect" phone call to "find" votes, and the fact that local/state charges cannot be pardoned by the US president.</p>
-                    <p>The indictments have been unsealed. These are state charges for attempting to overturn the Georgia election results. There were 19 people included in the indictments, including the former guy, <a href="/rudy">Rudy Giuliani</a>, <a href="/mark-meadows">Mark Meadows</a>, <a href="/jeffrey-clark">Jeffrey Clark</a>, <a href="sidney-powell">Sidney Powell</a>, <a href="/ken-chesebro">Ken Chesebro</a>, and quite a few others.</p>
+                    <p>The indictments have been unsealed. These are state charges for attempting to overturn the Georgia election results. There were <a target="story" href="https://abcnews.go.com/US/wireStory/19-people-charged-georgia-indictment-connected-trump-election-102274367">19 people included</a> in the indictments, including the former guy, <a href="/rudy">Rudy Giuliani</a>, <a href="/mark-meadows">Mark Meadows</a>, <a href="/jeffrey-clark">Jeffrey Clark</a>, <a href="sidney-powell">Sidney Powell</a>, <a href="/kenneth-chesebro">Kenneth Chesebro</a>, <a href="/john-eastman">John Eastman</a>, and quite a few others.</p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
                 </div>
                 <hr />
@@ -145,7 +169,20 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "mark-meadows", new Criminal("Mark Meadows") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "jeffrey-clark", new Criminal("Jeffrey Clark") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "sidney-powell", new Criminal("Sidney Powell") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
-        { "ken-chesebro", new Criminal("Ken Chesebro") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "kenneth-chesebro", new Criminal("Kenneth Chesebro") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "john-eastman", new Criminal("John Eastman") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "jenna-ellis", new Criminal("Jenna Ellis") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "ray-smith", new Criminal("Ray Smith") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "robert-cheeley", new Criminal("Robert Cheeley") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "michael-roman", new Criminal("Michael Roman") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "david-shafer", new Criminal("David Shafer") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "shawn-still", new Criminal("Shawn Still") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "stephen-cliffgard-lee", new Criminal("Stephen Cliffgard Lee") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "harrison-william-prescott-floyd", new Criminal("Harrison William Prescott Floyd") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "trevian-kutti", new Criminal("Trevian C. Kutti") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "cathy-latham", new Criminal("Cathy Latham") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "scott-graham-hall", new Criminal("Scott Graham Hall") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "misty-hampton", new Criminal("Misty Hampton") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "michigan-16", new Criminal {
             Name = "Michigan's Group of 16 False Electors",
             Indicted = true,
