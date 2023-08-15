@@ -320,7 +320,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                         padding: 0;
                     }
                     #body-content {
-                        background-color: rgba(225, 225, 255, 0.4);
+                        background-color: rgba(225, 225, 255, 0.6);
                         border: 1px solid black;
                         border-radius: 25px;
                         margin: 5%;
