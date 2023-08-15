@@ -247,7 +247,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     var nextIndicteeAlias = nextIndictee.Key;
     var nextIndicteeName = nextIndictee.Value.Name;
 
-    var suggestions = criminals.Where(c => c.Key != criminalName).Select(c => c.Key);
+    var suggestions = criminals.Where(c => c.Key != criminalName && c.Key != nextIndicteeAlias).Select(c => c.Key);
     var suggestedAlias = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
     var suggestedCriminalName = criminals[suggestedAlias].Name;
 
