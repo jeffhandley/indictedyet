@@ -15,6 +15,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     var redirects = new Dictionary<string, string> {
         { "theformerguy", "the-former-guy" },
         { "45", "the-former-guy" },
+        { "rudygiuliani", "rudy" },
+        { "rudy-giuliani", "rudy" },
+        { "giuliani", "rudy" },
         { "mattgaetz", "matt-gaetz" },
         { "gaetz", "matt-gaetz" },
         { "matt-geatz", "matt-gaetz" },
@@ -51,6 +54,9 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "desantis", "ron-desantis" },
         { "marjorie-taylor-greene", "mtg" },
         { "marjorie-taylor-green", "mtg" },
+        { "sydney-powell", "sidney-powell" },
+        { "sydney", "sidney-powell" },
+        { "powell", "sidney-powell" },
     };
 
     if (redirects.TryGetValue(name, out var redirection)) {
@@ -89,17 +95,27 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         <p class="emoji delayed-visibility">{randomIndictedEmoji}</p>
         """;
 
+    var georgiaAug14 = new Criminal {
+        Heading = yes,
+        Body = $"""
+                <div>
+                    <p>Monday, August 14th, a Fulton county grand jury in Georgia <a target="story" href="https://www.pbs.org/newshour/politics/prosecutors-start-presenting-2020-georgia-election-investigation-to-grand-jury">recommended indictments</a> for attempting to overturn Georgia's 2020 election results.</p>
+                    <p>These are state charges and there were 19 people included in the indictments, including <a href="/tfg">the former guy</a>, <a href="/rudy">Rudy Giuliani</a>, <a href="/mark-meadows">Mark Meadows</a>, <a href="/jeffrey-clark">Jeffrey Clark</a>, <a href="sidney-powell">Sidney Powell</a>, <a href="/ken-chesebro">Ken Chesebro</a>, and quite a few others.</p>
+                    <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
+                </div>
+            """
+    };
+
     var criminals = new Dictionary<string, Criminal> {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
-            Hashtag = "TFG",
             Heading = $"""
                 YES! There are four sets of indictments so far.
                 """,
             Body = $"""
                 <div>
-                    <p>Monday, August 14th, a Georgia state grand jury <a target="story" href="https://www.pbs.org/newshour/politics/prosecutors-start-presenting-2020-georgia-election-investigation-to-grand-jury">recommended indictments</a> for attempting to overturn Georgia's 2020 election results. These state level charges are noteworthy for several reasons, including his blatant attempt to have votes "found" in his "perfect" phone call, and the fact that state-level charges cannot be pardoned by the US president.</p>
-                    <p>We are still waiting for the indictments to be unsealed so that we know what the charges will be.</p>
+                    <p>Monday, August 14th, a Fulton county grand jury in Georgia <a target="story" href="https://www.pbs.org/newshour/politics/prosecutors-start-presenting-2020-georgia-election-investigation-to-grand-jury">recommended indictments</a> for attempting to overturn Georgia's 2020 election results. These charges are noteworthy for several reasons, including his blatant attempt in his "perfect" phone call to "find" votes, and the fact that local/state charges cannot be pardoned by the US president.</p>
+                    <p>The indictments have been unsealed. These are state charges for attempting to overturn the Georgia election results. There were 19 people included in the indictments, including the former guy, <a href="/rudy">Rudy Giuliani</a>, <a href="/mark-meadows">Mark Meadows</a>, <a href="/jeffrey-clark">Jeffrey Clark</a>, <a href="sidney-powell">Sidney Powell</a>, <a href="/ken-chesebro">Ken Chesebro</a>, and quite a few others.</p>
                     <p class="emoji delayed-visibility">{indictedEmojis[RandomNumberGenerator.GetInt32(notIndictedEmojis.Length)]}</p>
                 </div>
                 <hr />
@@ -123,9 +139,14 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 </div>
                 """
         } },
+        { "rudy", new Criminal("Rudy Giuliani") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "mark-meadows", new Criminal("Mark Meadows") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "jeffrey-clark", new Criminal("Jeffrey Clark") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "sidney-powell", new Criminal("Sidney Powell") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "ken-chesebro", new Criminal("Ken Chesebro") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        } },
         { "michigan-16", new Criminal {
             Name = "Michigan's Group of 16 False Electors",
-            Hashtag = "Michigan False Electors",
             Heading = yes,
             Body = $"""
                 <p>On July 18, Michigan Attorney General Dana Nessel 
@@ -169,7 +190,6 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "michael-flynn", new Criminal("Michael Flynn") },
         { "matt-gaetz", new Criminal {
             Name = "Matt Gaetz",
-            Hashtag = "#RapeyMcForehead",
             Heading = no
         } },
         { "bill-barr", new Criminal("Bill Barr") },
@@ -178,27 +198,18 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "roger-stone", new Criminal("Roger Stone") },
         { "ginni-thomas", new Criminal("Ginni Thomas") },
         { "clarence-thomas", new Criminal("Clarence Thomas") },
-        { "stephen-miller", new Criminal {
-            Name = "Stephen Miller"
-        } },
+        { "stephen-miller", new Criminal("Stephen Miller") },
         { "louie-gohmert", new Criminal("Louie Gohmert") },
         { "newt-gingrich", new Criminal("Newt Gingrich") },
-        { "jim-jordan", new Criminal {
-            Name = "Jim Jordan",
-            Hashtag = "#GymJordan"
-        } },
+        { "jim-jordan", new Criminal("Jim Jordan") },
         { "lindsey-graham", new Criminal("Lindsey Graham") },
         { "jared-kushner", new Criminal("Jared Kushner") },
-        { "mark-meadows", new Criminal("Mark Meadows") },
-        { "phil-bryant", new Criminal("Gov. Phil Bryant") { Hashtag = "Gov. Phil Bryant" } },
+        { "phil-bryant", new Criminal("Gov. Phil Bryant") },
         { "brett-favre", new Criminal("Brett Favre") },
-        { "mike-lindell", new Criminal("Mike Lindell, the pillow guy") {
-            Hashtag = "#MikeLindell"
-        } },
-        { "greg-abbott", new Criminal("Gov. Greg Abbott") { Hashtag = "Gov. Greg Abbott" } },
-        { "ron-desantis", new Criminal("Gov. Ron Desantis") { Hashtag = "Gov. Ron DeSantis" } },
-        { "mtg", new Criminal("Rep. Marjorie Taylor Greene") { Hashtag = "MTG" } },
-        { "jeffrey-clark", new Criminal("Jeffrey Clark") },
+        { "mike-lindell", new Criminal("Mike Lindell, the pillow guy") },
+        { "greg-abbott", new Criminal("Gov. Greg Abbott") },
+        { "ron-desantis", new Criminal("Gov. Ron Desantis") },
+        { "mtg", new Criminal("Rep. Marjorie Taylor Greene") },
         { "hunter-biden", new Criminal {
             Name = "Hunter Biden",
             Heading = yes,
@@ -219,7 +230,6 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         criminal = defaultCriminal;
     }
 
-    criminal.Hashtag ??= "#" + criminal.Name.Replace(" ", "").Replace(".", "");
     criminal.Heading ??= notYet;
     criminal.Body ??= $"""
             <p><a target="github" href="https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs">Submit a contribution</a> if you have an update!</p>
@@ -350,14 +360,12 @@ app.Run();
 struct Criminal
 {
     public string Name;
-    public string? Hashtag;
     public string? Url;
     public string? Heading;
     public string? Body;
 
     public Criminal(string name) {
         Name = name;
-        Hashtag = null;
         Url = null;
         Heading = null;
         Body = null;
