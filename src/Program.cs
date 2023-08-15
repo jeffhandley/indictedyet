@@ -241,7 +241,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             <p><a target="github" href="https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs">Submit a contribution</a> if you have an update!</p>
             """;
 
-    var criminalIndex = criminals.Select(c => c.Key).IndexOf(criminalName);
+    var criminalIndex = criminals.Select(c => c.Key).ToArray().IndexOf(criminalName);
     var nextIndictee = criminals.Skip(criminalIndex).FirstOrDefault(c => c.Value.Indicted) ??
         criminals.First(c => c.Value.Indicted);
     var nextIndicteeAlias = nextIndictee.Key;
