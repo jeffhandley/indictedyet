@@ -109,6 +109,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     var criminals = new Dictionary<string, Criminal> {
         { "the-former-guy", new Criminal {
             Name = "The Former Guy",
+            Indicted = true,
             Heading = $"""
                 YES! There are four sets of indictments so far.
                 """,
@@ -139,14 +140,14 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                 </div>
                 """
         } },
-        { "rudy", new Criminal("Rudy Giuliani") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
-        { "mark-meadows", new Criminal("Mark Meadows") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
-        { "jeffrey-clark", new Criminal("Jeffrey Clark") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
-        { "sidney-powell", new Criminal("Sidney Powell") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
-        { "ken-chesebro", new Criminal("Ken Chesebro") { Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
-        } },
+        { "rudy", new Criminal("Rudy Giuliani") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "mark-meadows", new Criminal("Mark Meadows") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "jeffrey-clark", new Criminal("Jeffrey Clark") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "sidney-powell", new Criminal("Sidney Powell") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "ken-chesebro", new Criminal("Ken Chesebro") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "michigan-16", new Criminal {
             Name = "Michigan's Group of 16 False Electors",
+            Indicted = true,
             Heading = yes,
             Body = $"""
                 <p>On July 18, Michigan Attorney General Dana Nessel 
@@ -157,6 +158,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         } },
         { "matthew-deperno", new Criminal {
             Name = "Matthew DePerno",
+            Indicted = true,
             Heading = yes,
             Body = $"""
                 <p>On August 1, former Michigan attorney general candidate Matthew DePerno (R) <a target="story" href="https://www.washingtonpost.com/national-security/2023/08/01/michigan-indictment-2020-election-voting-machine-tampering/">was charged</a> with improper possession of a voting machine, conspiracy to unlawfully possess a voting machine, conspiracy to gain unauthorized access to a computer system and willfully damaging a voting machine.</p>
@@ -164,6 +166,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         } },
         { "daire-rendon", new Criminal {
             Name = "Daire Rendon",
+            Indicted = true,
             Heading = yes,
             Body = $"""
                 <p>On August 1, former Michigan state representative Daire Rendon (R) <a target="story" href="https://www.washingtonpost.com/national-security/2023/08/01/michigan-indictment-2020-election-voting-machine-tampering/">was charged</a> with conspiracy to unlawfully possess a voting machine and using false pretenses with the intent to defraud.</p>
@@ -171,6 +174,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         } },
         { "steve-bannon", new Criminal {
             Name = "Steve Bannon",
+            Indicted = true,
             Heading = yes,
             Body = $"""
                 <p>On October 21, 2022 (the same day <a href="/tfg">the former guy was subpoenaed</a>), Bannon was <a target="story" href="https://apnews.com/article/capitol-siege-steve-bannon-congress-donald-trump-sentencing-36d412eba9e1609a030859852378ae3d">sentenced to 4 months behind bars</a> for defying a subpoena. Plus, he was <a target="story" href="https://www.pbs.org/newshour/politics/steve-bannon-pleads-not-guilty-to-laundering-money-donated-to-build-border-wall">indicted in New York</a> on September 8, 2022 for defrauding MAGA supporters out of 'We&nbsp;Build&nbsp;the&nbsp;Wall' money.</p>
@@ -178,6 +182,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         } },
         { "george-santos", new Criminal {
             Name = "Rep. George Santos",
+            Indicted = true,
             Heading = yes,
             Body = $"""
                 <p>On May 10, 2023, <a target="story" href="https://apnews.com/hub/george-santos">George Santos</a>
@@ -212,6 +217,7 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "mtg", new Criminal("Rep. Marjorie Taylor Greene") },
         { "hunter-biden", new Criminal {
             Name = "Hunter Biden",
+            Indicted = true,
             Heading = yes,
             Body = $"""
                 <p>Well, how about that? On June 20, 2023, <a target="story" href="https://www.npr.org/2023/06/20/1087173827/hunter-biden">
@@ -234,6 +240,12 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
     criminal.Body ??= $"""
             <p><a target="github" href="https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs">Submit a contribution</a> if you have an update!</p>
             """;
+
+    var criminalIndex = criminals.Select(c => c.Key).IndexOf(criminalName);
+    var nextIndictee = criminals.Skip(criminalIndex).FirstOrDefault(c => c.Value.Indicted) ??
+        criminals.First(c => c.Value.Indicted);
+    var nextIndicteeAlias = nextIndictee.Key;
+    var nextIndicteeName = criminals[nextIndictee.Key].Value.Name;
 
     var suggestions = criminals.Where(c => c.Key != criminalName).Select(c => c.Key);
     var suggestedAlias = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
@@ -340,7 +352,8 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
                     </div>
                     <hr />
                     <p id="suggestion" class="delayed-visibility">
-                        What about <a href="{{suggestedAlias}}">{{suggestedCriminalName}}</a>?
+                        Did you know that <a href="/{{nextIndicteeAlias}}">{{nextIndicteeName}}</a> was indicted?
+                        What about <a href="/{{suggestedAlias}}">{{suggestedCriminalName}}</a>?
                     </p>
                 </div>
                 <div id="foot-content">
@@ -363,6 +376,7 @@ struct Criminal
     public string? Url;
     public string? Heading;
     public string? Body;
+    public bool Indicted = false;
 
     public Criminal(string name) {
         Name = name;
