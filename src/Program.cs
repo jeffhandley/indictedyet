@@ -240,6 +240,12 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             """;
 
     var criminalIndex = criminals.Select(c => c.Key).ToList().IndexOf(criminalName);
+
+    if (!criminal.Indicted)
+    {
+        criminalIndex = RandomNumberGenerator.GetInt32(criminals.Select(c => c.Value.Indicted).Count()) - 1;
+    }
+
     var nextIndictee = criminals.ToList().Skip(criminalIndex + 1).Union(criminals).First(c => c.Value.Indicted);
     var nextIndicteeAlias = nextIndictee.Key;
     var nextIndicteeName = nextIndictee.Value.Name;
