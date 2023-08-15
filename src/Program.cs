@@ -241,11 +241,10 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
             <p><a target="github" href="https://github.com/jeffhandley/indictedyet/edit/main/src/Program.cs">Submit a contribution</a> if you have an update!</p>
             """;
 
-    var criminalIndex = criminals.Select(c => c.Key).ToArray().IndexOf(criminalName);
-    var nextIndictee = criminals.Skip(criminalIndex).FirstOrDefault(c => c.Value.Indicted) ??
-        criminals.First(c => c.Value.Indicted);
+    var criminalIndex = criminals.Select(c => c.Key).ToList().IndexOf(criminalName);
+    var nextIndictee = criminals.Skip(criminalIndex).Union(criminals).First(c => c.Value.Indicted);
     var nextIndicteeAlias = nextIndictee.Key;
-    var nextIndicteeName = criminals[nextIndictee.Key].Value.Name;
+    var nextIndicteeName = nextIndictee.Value.Name;
 
     var suggestions = criminals.Where(c => c.Key != criminalName).Select(c => c.Key);
     var suggestedAlias = suggestions.ElementAt(RandomNumberGenerator.GetInt32(suggestions.Count()));
