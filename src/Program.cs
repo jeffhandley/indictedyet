@@ -168,13 +168,23 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "rudy", new Criminal("Rudy Giuliani") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "mark-meadows", new Criminal("Mark Meadows") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "jeffrey-clark", new Criminal("Jeffrey Clark") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
-        { "sidney-powell", new Criminal("Sidney Powell") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "sidney-powell", new Criminal("Sidney Powell") {
+            Indicted = true,
+            Heading = georgiaAug14.Heading,
+            Body = $"""
+                <p>
+                    She <a target="story" href="https://www.documentcloud.org/documents/23927471-23sc188947-demand-for-speedy-trial-1">requested a speedy trial</a> on August 25, 2023.
+                </p>
+                {georgiaAug14.Body}
+                """
+        } },
         { "kenneth-chesebro", new Criminal("Kenneth Chesebro") {
             Indicted = true,
             Heading = georgiaAug14.Heading,
             Body = $"""
                 <p>
-                    His trial <a target="story" href="https://www.cnbc.com/2023/08/24/first-trial-of-trump-co-defendant-in-georgia-case-will-begin-oct-23-judge-rules.html">has been set for October 23, 2023</a>!
+                    After <a target="story" href="https://www.documentcloud.org/documents/23925133-23sc188947-demand-for-speedy-trial-chesebro">requesting a speedy trial</a> on August 23, 2023,
+                    his trial <a target="story" href="https://www.cnbc.com/2023/08/24/first-trial-of-trump-co-defendant-in-georgia-case-will-begin-oct-23-judge-rules.html">has been set for October 23, 2023</a>!
                 </p>
                 {georgiaAug14.Body}
                 """
