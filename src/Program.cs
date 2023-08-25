@@ -169,7 +169,16 @@ app.MapGet("{name=the-former-guy}", (HttpContext context) => {
         { "mark-meadows", new Criminal("Mark Meadows") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "jeffrey-clark", new Criminal("Jeffrey Clark") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "sidney-powell", new Criminal("Sidney Powell") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
-        { "kenneth-chesebro", new Criminal("Kenneth Chesebro") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
+        { "kenneth-chesebro", new Criminal("Kenneth Chesebro") {
+            Indicted = true,
+            Heading = georgiaAug14.Heading,
+            Body = $"""
+                <p>
+                    His trial <a target="story" href="https://www.cnbc.com/2023/08/24/first-trial-of-trump-co-defendant-in-georgia-case-will-begin-oct-23-judge-rules.html">has been set for October 23, 2023</a>!
+                </p>
+                {georgiaAug14.Body}
+                """
+        } },
         { "john-eastman", new Criminal("John Eastman") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "jenna-ellis", new Criminal("Jenna Ellis") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
         { "ray-smith", new Criminal("Ray Smith") { Indicted = true, Heading = georgiaAug14.Heading, Body = georgiaAug14.Body } },
